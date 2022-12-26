@@ -1,3 +1,6 @@
 # Online-Groceries
-#E-commerce android application using  firebase authentication and advanced android topics. E-commerce android application that makes user buy his food easily .
+#E-commerce android application. E-commerce android application that makes user buy his food easily .
 
+#Use 
+CountryCodePickerProject
+firebase authentication
