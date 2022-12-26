@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Online Groceries</string>
+    <string name="online_groc">online groceriet</string>
+    <string name="nectar">nectar</string>
+    <string name="welcome_to_our_store">Welcome to our store</string>
+    <string name="ger_your_gr">Ger your groceries in as fast as one hour</string>
+    <string name="get_started">Get Started</string>
+    <string name="get_your_gr">Get your groceries with nectar</string>
+    <string name="country">Country</string>
+    <string name="your_number_phone">Your Number Phone</string>
+    <string name="or_connect_">Or connect with social media</string>
+    <string name="face">Continue with Facebook </string>
+    <string name="google">Continue with Google</string>
+    <string name="enter_your_mobile_number">Enter your mobile number</string>
+    <string name="mobile_numb">Mobile Number</string>
+    <string name="Enter_your_digit_code">Enter your 4-digit code</string>
+    <string name="code">Code</string>
+    <string name="enter_code">--------------</string>
+
+</resources>
