@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sing_in.fireBase.Number">
+    tools:context=".singIn.phoneNumber.Number">
 
     <ImageView
         android:id="@+id/imageView"
@@ -12,24 +12,25 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_20sdp"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="@dimen/_300sdp"
+        android:layout_width="@dimen/_280sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="@dimen/_25sdp"
-        android:fontFamily="@font/gilda_display"
+        android:fontFamily="@font/gilroylight"
         android:text="@string/enter_your_mobile_number"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_65sdp"
         android:textAppearance="@style/enter_your_"
         android:lineSpacingExtra="-3sp"
         android:textStyle="bold"
-        android:gravity="center"
+        android:layout_marginStart="@dimen/_24sdp"
+
         />
 
     <!-- Mobile Number -->
@@ -37,33 +38,37 @@
         android:id="@+id/mobile_numb"
         android:layout_width="112dp"
         android:layout_height="29dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="24.88dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="172.6dp"
+        android:layout_marginStart="@dimen/_24sdp"
+        android:layout_marginTop="168dp"
+        android:gravity="top"
+        android:lineSpacingExtra="9sp"
         android:text="@string/mobile_numb"
         android:textAppearance="@style/mobile_numb"
-        android:lineSpacingExtra="9sp"
         android:translationY="-4.7sp"
-        android:gravity="top"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/group_6798"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_39sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_211sdp"
+        android:layout_marginTop="@dimen/_3sdp"
         android:background="#00000000"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/mobile_numb">
 
         <com.hbb20.CountryCodePicker
+            android:id="@+id/country_Picker"
             android:layout_gravity="center_vertical"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="wrap_content"
+            app:ccp_defaultNameCode="EG"
             />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +80,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Your_number_phone"
                 android:layout_width="@dimen/_205sdp"
-                android:inputType="number"
+                android:inputType="phone"
                 android:padding="@dimen/_5sdp"
                 android:layout_height="match_parent">
             </com.google.android.material.textfield.TextInputEditText>
@@ -89,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/forward"
@@ -97,5 +102,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/group_6798"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.169" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

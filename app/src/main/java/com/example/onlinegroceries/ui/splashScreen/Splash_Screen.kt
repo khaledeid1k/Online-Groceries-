@@ -1,4 +1,4 @@
-package com.example.onlinegroceries
+package com.example.onlinegroceries.ui.splashScreen
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import com.example.onlinegroceries.R
 
 
 class Splash_Screen : AppCompatActivity() {
@@ -24,7 +25,7 @@ class Splash_Screen : AppCompatActivity() {
     fun view_activity_for_time(){
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                val intent=Intent(this,Onbording::class.java)
+                val intent=Intent(this, Onbording::class.java)
                 startActivity(intent)
                 finish()
             }

@@ -1,22 +1,24 @@
-package com.example.onlinegroceries
+package com.example.onlinegroceries.singIn
 
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.onlinegroceries.ui.selectLocation.SelectLocation
 import com.example.onlinegroceries.databinding.ActivitySingInBinding
-import com.example.onlinegroceries.sing_in.fireBase.Number
+import com.example.onlinegroceries.singIn.phoneNumber.Number
+import com.google.firebase.auth.FirebaseAuth
 
 
 class Sing_in : AppCompatActivity() {
     private lateinit var binding: ActivitySingInBinding
+    private lateinit var auth: FirebaseAuth
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -29,6 +31,7 @@ class Sing_in : AppCompatActivity() {
         // Hidden toolbar
         supportActionBar?.hide()
         moveToWriteYouPhoneNumber()
+        auth = FirebaseAuth.getInstance()
 
     }
 
@@ -107,6 +110,19 @@ class Sing_in : AppCompatActivity() {
 
     }
 
+
+    // get in user direct to main app if he sign in
+    // [START on_start_check_user]
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if(currentUser!=null){
+            startActivity(Intent(this, SelectLocation::class.java))
+        }
+
+    }
+    // [END on_start_check_user]
 
 
     }

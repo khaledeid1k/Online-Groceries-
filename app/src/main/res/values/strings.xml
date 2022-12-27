@@ -13,8 +13,12 @@
     <string name="google">Continue with Google</string>
     <string name="enter_your_mobile_number">Enter your mobile number</string>
     <string name="mobile_numb">Mobile Number</string>
-    <string name="Enter_your_digit_code">Enter your 4-digit code</string>
+    <string name="Enter_your_digit_code">Enter your 6-digit code</string>
     <string name="code">Code</string>
     <string name="enter_code">--------------</string>
+    <string name="ResendCode">Resend Code</string>
+    <string name="select_your_location">Select Your Location</string>
+    <string name="Switch_on_your_location">Switch on your location to stay in tune with what’s happening in your area</string>
+    <string name="your_zone">Your Zone</string>
 
 </resources>

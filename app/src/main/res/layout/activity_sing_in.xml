@@ -6,7 +6,7 @@
     android:id="@+id/sing_in_"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sing_in"
+    tools:context=".singIn.Sing_in"
     android:orientation="vertical">
     <!--    android:background="@drawable/sing_in_"-->
 

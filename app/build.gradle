@@ -53,6 +53,17 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'
 
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    // GSON
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    // coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+//    // google map
+//    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+
+
 
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
