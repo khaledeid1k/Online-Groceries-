@@ -20,5 +20,7 @@
     <string name="select_your_location">Select Your Location</string>
     <string name="Switch_on_your_location">Switch on your location to stay in tune with what’s happening in your area</string>
     <string name="your_zone">Your Zone</string>
+    <string name="your_name">Your Name</string>
+    <string name="submit">Submit</string>
 
 </resources>

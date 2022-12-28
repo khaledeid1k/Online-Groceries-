@@ -195,8 +195,8 @@ class AuthenticateFirebasePhone() {
                     // Sign in success, update UI with the signed-in user's information
                    Log.d(TAG, "khaled signInWithCredential:success")
                //     val user = task.result?.user
-                    val SigninSuccess = Intent(context, SelectLocation::class.java)
-                    context.startActivity(SigninSuccess)
+                    val signInSuccess = Intent(context, SelectLocation::class.java)
+                    context.startActivity(signInSuccess)
                 } else {
                     // Sign in failed, display a message and update the UI
                     Log.d(TAG, "khaled signInWithCredential:failure", task.exception)
