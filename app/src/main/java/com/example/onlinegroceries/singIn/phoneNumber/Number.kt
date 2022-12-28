@@ -29,6 +29,18 @@ class Number : AppCompatActivity() {
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
+
+        addValueOfAuthenticateFirebasePhone()
+
+        moveToVerification()
+
+        countryCode()
+
+
+    }
+
+    //Initialize of constructor's class to authenticate FirebasePhone
+    private fun addValueOfAuthenticateFirebasePhone(){
         authenticateFirebasePhone=
             AuthenticateFirebasePhone(
                 this,
@@ -36,12 +48,7 @@ class Number : AppCompatActivity() {
                 auth,
                 this
             )
-
-        moveToVerification()
-        countryCode()
-
     }
-
 
     //add country code to phone number
     private fun countryCode(){
@@ -49,8 +56,6 @@ class Number : AppCompatActivity() {
             codeCountry= binding.countryPicker.selectedCountryCode
         }
     }
-
-
 
     @RequiresApi(Build.VERSION_CODES.M)
     //if Permission Is Granted will move to verification page

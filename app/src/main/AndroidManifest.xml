@@ -55,7 +55,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".singIn.Sing_in"
+            android:name=".singIn.SingIn"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -24,11 +24,14 @@ class Profile : AppCompatActivity() {
         setContentView(binding.root)
         // Hidden toolbar
         supportActionBar?.hide()
+        // Initialize SharedPreferences
         prefsProfile= getSharedPreferences("profile", MODE_PRIVATE)
+
         resultImageChooser()
         addProfilePhoto()
         submitProfile()
     }
+
     // click to chose image from gallery
     // the Select Image Button is clicked
     private fun addProfilePhoto(){
@@ -36,7 +39,6 @@ class Profile : AppCompatActivity() {
             imageChooser()
         }
     }
-    // this function is triggered when
 
     // intent to chose image from gallery
     private fun imageChooser() {
@@ -46,6 +48,7 @@ class Profile : AppCompatActivity() {
         getResult.launch(intent)
 
       }
+
     //result return from intent of choosing photo from gallery
     private fun resultImageChooser(){
         // Receiver
@@ -62,9 +65,8 @@ class Profile : AppCompatActivity() {
             }
     }
 
-
-
-    fun submitProfile(){
+    //move to Home Screen after add photo and name
+    private fun submitProfile(){
         binding.SubmitProfile.setOnClickListener{
             if(binding.YourName.text?.isNotEmpty() == true){
                 prefsProfile.edit().putString("name",binding.YourName.text.toString()).apply()

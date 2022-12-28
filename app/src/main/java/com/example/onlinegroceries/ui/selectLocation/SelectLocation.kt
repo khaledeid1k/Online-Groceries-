@@ -14,6 +14,12 @@ class SelectLocation : AppCompatActivity() {
         setContentView(binding.root)
         // Hidden toolbar
         supportActionBar?.hide()
+
+        moveNextScreen()
+    }
+
+    //Move to next Profile activity
+    fun moveNextScreen(){
         binding.SubmitLocation.setOnClickListener{
             startActivity(Intent(this,Profile::class.java))
         }

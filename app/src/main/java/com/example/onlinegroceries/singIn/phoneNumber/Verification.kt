@@ -29,24 +29,22 @@ class Verification : AppCompatActivity() {
         setContentView(root)
         // Hidden toolbar
         supportActionBar?.hide()
+
+        // Initialize SharedPreferences
         prefs = getSharedPreferences("phone", MODE_PRIVATE)
-        //receive intent from firebase
+
         receiveIntent()
-        //get code from edittext
-        authenticateFirebasePhone =
-            AuthenticateFirebasePhone(
-                this,
-                phoneNumber,
-                auth,
-                this,
-                resendToken,
-                OTP
-            )
+
+        addValueOfAuthenticateFirebasePhone()
+
         visibleButtonResendCode()
+
         verificationOfCode()
+
         resendCode()
     }
 
+    // to hidden Resend Text in first time open activity
     private fun visibleButtonResendCode() {
         binding.CodeOfVerificat.setText("")
         binding.ResendCode.visibility = View.INVISIBLE
@@ -92,5 +90,18 @@ class Verification : AppCompatActivity() {
 
         }
 
+    }
+
+    //Initialize of constructor's class to authenticate FirebasePhone
+    private fun addValueOfAuthenticateFirebasePhone(){
+        authenticateFirebasePhone =
+            AuthenticateFirebasePhone(
+                this,
+                phoneNumber,
+                auth,
+                this,
+                resendToken,
+                OTP
+            )
     }
 }

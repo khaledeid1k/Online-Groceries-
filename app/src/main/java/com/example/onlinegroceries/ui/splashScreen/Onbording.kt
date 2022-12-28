@@ -3,7 +3,7 @@ package com.example.onlinegroceries.ui.splashScreen
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.onlinegroceries.singIn.Sing_in
+import com.example.onlinegroceries.singIn.SingIn
 import com.example.onlinegroceries.databinding.ActivityOnbordingBinding
 
 class Onbording : AppCompatActivity() {
@@ -17,14 +17,15 @@ class Onbording : AppCompatActivity() {
         // Hidden toolbar
         supportActionBar?.hide()
 
-        getstart_of_sing_in()
+        startOfSingIn()
 
 
     }
 
-    fun getstart_of_sing_in(){
+    //move to Sing In Screen
+    fun startOfSingIn(){
         binding.getStart.setOnClickListener{
-            startActivity(Intent(this, Sing_in::class.java))
+            startActivity(Intent(this, SingIn::class.java))
 
         }
     }

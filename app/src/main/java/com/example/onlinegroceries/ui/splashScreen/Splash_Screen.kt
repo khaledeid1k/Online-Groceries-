@@ -16,13 +16,15 @@ class Splash_Screen : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         // Hidden toolbar
         supportActionBar?.hide()
-        view_activity_for_time()
+
+        viewActivityForTime()
 
 
 
     }
 
-    fun view_activity_for_time(){
+    // make splash screen for seconds time
+    private fun viewActivityForTime(){
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 val intent=Intent(this, Onbording::class.java)
@@ -32,7 +34,8 @@ class Splash_Screen : AppCompatActivity() {
 
             ,3000)
     }
-    // Show splash screen one time
+
+    // Show splash screen for seconds of time
     override fun onDestroy() {
         super.onDestroy()
         val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
