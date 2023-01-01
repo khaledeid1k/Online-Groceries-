@@ -52,5 +52,10 @@
 
     </style>
 
+    <style name="textTheme">
+        <item name="android:textSize">@dimen/_13sdp</item>
+        <item name="android:textColor">@color/filledBlack</item>
+    </style>
+
 
 </resources>

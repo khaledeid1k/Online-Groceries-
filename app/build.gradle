@@ -38,6 +38,9 @@ android {
 }
 
 dependencies {
+    //    // google map
+    //  implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+
     //Spinner
     implementation("com.hbb20:ccp:2.6.1")
     //for multi Screen
@@ -60,12 +63,24 @@ dependencies {
     // coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
-//    // google map
-//    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
     //cardView
     implementation "androidx.cardview:cardview:1.0.0"
 
+        def lifecycle_version = "2.5.1"
+        // ViewModel
+        implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+        // Saved state module for ViewModel
+        implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
 
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    //HiltViewModel
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation 'androidx.core:core-ktx:1.7.0'

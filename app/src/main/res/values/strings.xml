@@ -22,5 +22,6 @@
     <string name="your_zone">Your Zone</string>
     <string name="your_name">Your Name</string>
     <string name="submit">Submit</string>
+    <string name="hint_Product" >Search Store  </string>
 
 </resources>

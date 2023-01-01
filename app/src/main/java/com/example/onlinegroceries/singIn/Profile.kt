@@ -9,8 +9,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.onlinegroceries.databinding.ActivityProfileBinding
-import com.example.onlinegroceries.ui.HomeScreen.HomeScreen
-import java.net.URI
+import com.example.onlinegroceries.ui.searchScreen.SearchScreen
 
 
 class Profile : AppCompatActivity() {
@@ -72,7 +71,7 @@ class Profile : AppCompatActivity() {
                 prefsProfile.edit().putString("name",binding.YourName.text.toString()).apply()
                 if(!addImage){
 
-                    startActivity(Intent(this,HomeScreen::class.java))
+                    startActivity(Intent(this,SearchScreen::class.java))
                 }else{
                     Toast.makeText(this, "Pleas add Profile Image", Toast.LENGTH_SHORT).show()
                 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.onlinegroceries.singIn.SingIn
 import com.example.onlinegroceries.databinding.ActivityOnbordingBinding
+import com.example.onlinegroceries.ui.searchScreen.SearchScreen
 
 class Onbording : AppCompatActivity() {
     lateinit var binding: ActivityOnbordingBinding
@@ -25,7 +26,7 @@ class Onbording : AppCompatActivity() {
     //move to Sing In Screen
     fun startOfSingIn(){
         binding.getStart.setOnClickListener{
-            startActivity(Intent(this, SingIn::class.java))
+            startActivity(Intent(this, SearchScreen::class.java))
 
         }
     }

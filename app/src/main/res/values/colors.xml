@@ -8,4 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="demo_divider_color">#CE2114</color>
+    <color name="lightBlack">#7C7C7C</color>
+    <color name="filledBlack">#000</color>
+    <color name="green">#53B175</color>
+
+
+
 </resources>
