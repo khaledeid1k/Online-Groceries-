@@ -9,13 +9,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
-@Module
+
     object RetrofitBuilder {
 
         private const val  BASE_URL = "https://fakestoreapi.com/"
-    @Provides
-    @Singleton
          fun getRetrofit(): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)

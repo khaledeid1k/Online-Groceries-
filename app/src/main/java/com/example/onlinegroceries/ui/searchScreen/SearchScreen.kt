@@ -14,7 +14,6 @@ import com.example.onlinegroceries.Network.data.ProductModel
 import com.example.onlinegroceries.Network.dataSource.remoteDataSource.RetrofitBuilder
 import com.example.onlinegroceries.adapter.SearchAdapter
 import com.example.onlinegroceries.databinding.ActivitySearchScreenBinding
-import com.example.onlinegroceries.ui.main.MyViewModelFactory
 import com.example.onlinegroceries.ui.main.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -24,8 +23,7 @@ class SearchScreen : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
      private lateinit var searchAdapter: SearchAdapter
     private lateinit  var binding : ActivitySearchScreenBinding
-
-private  val viewModel : ProductsViewModel by viewModels()
+    private val viewModel by viewModels<ProductsViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivitySearchScreenBinding.inflate(layoutInflater)
