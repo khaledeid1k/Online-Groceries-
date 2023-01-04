@@ -1,6 +1,5 @@
 package com.example.onlinegroceries.ui.main
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,14 +8,19 @@ import com.example.onlinegroceries.Network.data.ProductModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
-
+//@HiltViewModel
 class ProductsViewModel
+//@Inject
 constructor(private val mainRepository: MainRepository)
     : ViewModel() {
-    val errorMessage = MutableLiveData<String>()
-    val productsList = MutableLiveData<ProductModel>()
+    // Backing property
+    private var _errorMessage = MutableLiveData<String>()
+    private var _productsList = MutableLiveData<ProductModel>()
+
+    val errorMessage : MutableLiveData<String> get() = _errorMessage
+    val productsList : MutableLiveData<ProductModel> get() = _productsList
     // if i want to cansel Coroutine
-    var job: Job? = null
+    private var job: Job? = null
 
 
     fun getAllProducts() {
@@ -24,16 +28,12 @@ constructor(private val mainRepository: MainRepository)
             val response = mainRepository.getProducts()
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    productsList.postValue(response.body())
+                    _productsList.postValue(response.body())
                 } else {
-                    onError("Error : ${response.message()} ")
+                    _errorMessage.postValue(response.message())
                 }
             }
         }
-    }
-
-    private fun onError(message: String) {
-        errorMessage.value = message
     }
 
     override fun onCleared() {
