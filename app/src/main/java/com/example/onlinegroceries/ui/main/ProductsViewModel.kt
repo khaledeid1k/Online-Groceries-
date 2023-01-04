@@ -8,10 +8,9 @@ import com.example.onlinegroceries.Network.data.ProductModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
-//@HiltViewModel
+@HiltViewModel
 class ProductsViewModel
-//@Inject
-constructor(private val mainRepository: MainRepository)
+@Inject constructor(private val mainRepository: MainRepository)
     : ViewModel() {
     // Backing property
     private var _errorMessage = MutableLiveData<String>()

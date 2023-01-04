@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -66,18 +68,27 @@ dependencies {
     //cardView
     implementation "androidx.cardview:cardview:1.0.0"
 
-        def lifecycle_version = "2.5.1"
-        // ViewModel
-        implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-        // Saved state module for ViewModel
-        implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+    def lifecycle_version = "2.5.1"
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
-    //HiltViewModel
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+
+    // Dagger Core
+    implementation "com.google.dagger:dagger:2.42"
+    // Dagger Android
+    api 'com.google.dagger:dagger-android:2.42'
+    api 'com.google.dagger:dagger-android-support:2.42'
+    // Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:2.42"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    kapt "com.google.dagger:hilt-android-compiler:2.42"
+
 
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'

@@ -19,19 +19,13 @@ import com.example.onlinegroceries.ui.main.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class SearchScreen : AppCompatActivity() {
-
     private lateinit var recyclerView: RecyclerView
      private lateinit var searchAdapter: SearchAdapter
     private lateinit  var binding : ActivitySearchScreenBinding
-     private val viewModel by viewModels<ProductsViewModel> {
-         MyViewModelFactory(mainRepository)
-     }
-     private val mainRepository  by lazy {
-          MainRepository()
-     }
-//private  val viewModel : ProductsViewModel by viewModels()
+
+private  val viewModel : ProductsViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivitySearchScreenBinding.inflate(layoutInflater)

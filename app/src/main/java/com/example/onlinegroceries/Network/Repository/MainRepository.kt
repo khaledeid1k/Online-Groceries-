@@ -8,11 +8,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 
-//@InstallIn(SingletonComponent::class)
-//@Module
-class MainRepository //@Inject constructor()
+@InstallIn(SingletonComponent::class)
+@Module
+class MainRepository @Inject constructor()
 {
-  //  @Provides
+    @Provides
     suspend fun getProducts() = RetrofitBuilder.apiService.getProducts()
 
 }
