@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlinegroceries.Network.data.ProductModel
@@ -43,6 +45,7 @@ class SearchAdapter(
 
     override fun getItemCount(): Int {
         return productsList.size }
+
 }
 
 

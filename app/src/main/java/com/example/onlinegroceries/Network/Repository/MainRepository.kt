@@ -1,15 +1,11 @@
 package com.example.onlinegroceries.Network.Repository
 
 
-import com.example.onlinegroceries.Network.dataSource.remoteDataSource.RetrofitBuilder
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import com.example.onlinegroceries.Network.dataSource.remoteDataSource.ApiHelper
 import javax.inject.Inject
 
-class MainRepository @Inject constructor()
-{
-    suspend fun getProducts() = RetrofitBuilder.apiService.getProducts()
-
+class MainRepository @Inject constructor(
+    private val apiHelper: ApiHelper
+){
+    suspend fun getProducts() = apiHelper.getProducts()
 }
