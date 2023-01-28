@@ -1,3 +1,3 @@
 package com.example.onlinegroceries.Network.data
 
-class ProductResponse :ProductModel() {}
+data class SliderData(val image:Int)

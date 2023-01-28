@@ -11,6 +11,9 @@
     <color name="lightBlack">#7C7C7C</color>
     <color name="filledBlack">#000</color>
     <color name="green">#53B175</color>
+    <color name="colorPrimary">#53B175</color>
+    <color name="colorPrimaryDark">#53B175</color>
+    <color name="colorAccent">#53B175</color>
 
 
 

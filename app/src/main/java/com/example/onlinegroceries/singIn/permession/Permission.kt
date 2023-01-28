@@ -1,7 +1,6 @@
 package com.example.onlinegroceries.singIn.permession
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,12 +10,13 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
-import com.example.onlinegroceries.singIn.phoneNumber.Number
+import com.example.onlinegroceries.ui.main.F_PhoneNumber
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 
 
 class Permission(var context: Context, var permession: String,
-                 var activity: AppCompatActivity): AppCompatActivity() {
+                 var fragmentActivity: FragmentActivity): AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun checkPermissionIsGranted()  {
@@ -26,9 +26,10 @@ class Permission(var context: Context, var permession: String,
                 Manifest.permission.SEND_SMS
             ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
-                context.startActivity(Intent(context, Number::class.java))
+    //            findNavController(@IdRes viewId: int)
+                context.startActivity(Intent(context, F_PhoneNumber::class.java))
             }
-            shouldShowRequestPermissionRationale(activity,permession)
+            shouldShowRequestPermissionRationale(fragmentActivity,permession)
             -> {
                 // In an educational UI, explain to the user why your app requires this
                 // permission for a specific feature to behave as expected, and what
@@ -60,7 +61,7 @@ class Permission(var context: Context, var permession: String,
             if (isGranted) {
                 // Permission is granted. Continue the action or workflow in your
                 // app.
-                context.startActivity(Intent(context, Number::class.java))
+                context.startActivity(Intent(context, F_PhoneNumber::class.java))
             } else {
                 // Explain to the user that the feature is unavailable because the
                 // feature requires a permission that the user has denied. At the
