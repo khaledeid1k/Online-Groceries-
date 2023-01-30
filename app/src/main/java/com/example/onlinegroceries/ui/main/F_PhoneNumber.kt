@@ -19,10 +19,10 @@ import com.google.firebase.auth.FirebaseAuth
 class F_PhoneNumber : Fragment() {
     private var codeCountry: String = "+20"
     private lateinit var binding: FragmentNumberBinding
-    private lateinit var authenticateFirebasePhone   : StartPhoneNumberVerification
+    private lateinit var authenticateFirebasePhone: StartPhoneNumberVerification
     private lateinit var auth: FirebaseAuth
-    private lateinit var  phoneNumber: String
-    private lateinit var navController :NavController
+    private lateinit var phoneNumber: String
+    private lateinit var navController: NavController
 
 
     override fun onCreateView(
@@ -30,8 +30,10 @@ class F_PhoneNumber : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding= FragmentNumberBinding.inflate(inflater, container,
-            false)
+        binding = FragmentNumberBinding.inflate(
+            inflater, container,
+            false
+        )
 
         return binding.root
     }
@@ -44,7 +46,7 @@ class F_PhoneNumber : Fragment() {
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
-        navController=findNavController(this)
+        navController = findNavController(this)
 
         moveToVerification()
 
@@ -54,22 +56,22 @@ class F_PhoneNumber : Fragment() {
 
 
     //Initialize of constructor's class to authenticate FirebasePhone
-    private fun addValueOfAuthenticateFirebasePhone(){
-        authenticateFirebasePhone=
+    private fun addValueOfAuthenticateFirebasePhone() {
+        authenticateFirebasePhone =
             StartPhoneNumberVerification(
                 requireActivity(),
                 phoneNumber,
                 auth,
                 requireActivity(),
-               navController
+                navController
             )
 
     }
 
     //add country code to phone number
-    private fun countryCode(){
+    private fun countryCode() {
         binding.countryPicker.setOnCountryChangeListener {
-            codeCountry= binding.countryPicker.selectedCountryCode
+            codeCountry = binding.countryPicker.selectedCountryCode
         }
     }
 
@@ -77,25 +79,21 @@ class F_PhoneNumber : Fragment() {
     //if Permission Is Granted will move to verification page
     fun moveToVerification() {
         binding.fab.setOnClickListener {
-            phoneNumber=   binding.YourNumberPhone.text?.trim().toString()
+            phoneNumber = binding.YourNumberPhone.text?.trim().toString()
             addValueOfAuthenticateFirebasePhone()
-            if(phoneNumber.length>=4){
-                phoneNumber= "$codeCountry $phoneNumber"
+            if (phoneNumber.length >= 4) {
+                phoneNumber = "$codeCountry $phoneNumber"
                 Log.d("s", "khaled moveToVerification: $phoneNumber")
 
-                authenticateFirebasePhone.
-                    startPhoneNumberVerification(phoneNumber)
-            }else{
-                Toast.makeText(requireActivity(),"Please enter Your number ", Toast.LENGTH_SHORT).show()
+                authenticateFirebasePhone.startPhoneNumberVerification(phoneNumber)
+            } else {
+                Toast.makeText(requireActivity(), "Please enter Your number ", Toast.LENGTH_SHORT)
+                    .show()
             }
 
         }
 
     }
-
-
-
-
 
 
 }

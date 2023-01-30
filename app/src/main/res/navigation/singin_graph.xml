@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splachScreen">
 
@@ -22,8 +21,7 @@
     <fragment
         android:id="@+id/onbording"
         android:name="com.example.onlinegroceries.ui.main.F_OnBoarding"
-        android:label="fragment_onbording"
-        >
+        android:label="fragment_onbording">
         <action
             android:id="@+id/action_onbording_to_singIn"
             app:destination="@id/singIn" />
@@ -47,8 +45,7 @@
     <fragment
         android:id="@+id/singIn"
         android:name="com.example.onlinegroceries.ui.main.F_SingIn"
-        android:label="activity_sing_in"
-        >
+        android:label="activity_sing_in">
         <action
             android:id="@+id/action_singIn_to_number"
             app:destination="@id/number" />
@@ -56,12 +53,10 @@
     <fragment
         android:id="@+id/number"
         android:name="com.example.onlinegroceries.ui.main.F_PhoneNumber"
-        android:label="fragment_number"
-        >
+        android:label="fragment_number">
         <action
             android:id="@+id/action_number_to_verification"
-            app:destination="@id/verification" >
-        </action>
+            app:destination="@id/verification" />
     </fragment>
     <fragment
         android:id="@+id/verification"
@@ -82,8 +77,7 @@
     <fragment
         android:id="@+id/profile"
         android:name="com.example.onlinegroceries.ui.main.F_Profile"
-        android:label="fragment_profile"
-        >
+        android:label="fragment_profile">
         <action
             android:id="@+id/action_profile_to_homeG"
             app:destination="@id/homeG" />
@@ -91,5 +85,5 @@
 
     </fragment>
 
-<include app:graph="@navigation/home_graph"/>
+    <include app:graph="@navigation/home_graph" />
 </navigation>

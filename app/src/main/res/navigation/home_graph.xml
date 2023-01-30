@@ -17,7 +17,7 @@
         android:id="@+id/f_Search2"
         android:name="com.example.onlinegroceries.ui.home.header.F_Search"
         android:label="fragment_f__search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
 
     </fragment>
 

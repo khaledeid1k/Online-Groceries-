@@ -1,6 +1,7 @@
-package com.example.onlinegroceries.Network.data
+package com.example.onlinegroceries.network.data
 
-open class ProductModel : ArrayList<ProductModel.ProductModelItem>() {
+open class ProductModel :
+    ArrayList<ProductModel.ProductModelItem>() {
     data class ProductModelItem(
         val category: String,
         val description: String,

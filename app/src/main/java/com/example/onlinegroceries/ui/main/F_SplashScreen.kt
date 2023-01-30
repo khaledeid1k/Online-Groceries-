@@ -4,10 +4,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
@@ -15,7 +15,7 @@ import com.example.onlinegroceries.R
 import com.example.onlinegroceries.databinding.FragmentSplachScreenBinding
 
 class F_SplashScreen : Fragment() {
-lateinit var binding: FragmentSplachScreenBinding
+    lateinit var binding: FragmentSplachScreenBinding
     lateinit var prefs: SharedPreferences
 
 
@@ -24,8 +24,10 @@ lateinit var binding: FragmentSplachScreenBinding
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding= FragmentSplachScreenBinding.inflate(inflater, container,
-            false)
+        binding = FragmentSplachScreenBinding.inflate(
+            inflater, container,
+            false
+        )
         return binding.root
     }
 
@@ -36,24 +38,24 @@ lateinit var binding: FragmentSplachScreenBinding
         viewActivityForTime()
 
     }
-    private fun viewActivityForTime(){
+
+    private fun viewActivityForTime() {
         // show splash screen for first time
-        prefs = PreferenceManager.getDefaultSharedPreferences(requireActivity());
-        if(prefs.getBoolean("first_time", false))
-        {
+        prefs = PreferenceManager.getDefaultSharedPreferences(requireActivity())
+        if (prefs.getBoolean("first_time", false)) {
             findNavController().navigate(
-                R.id.action_splachScreen_to_onbording)
+                R.id.action_splachScreen_to_onbording
+            )
         }
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 lifecycleScope.launchWhenResumed {
-                findNavController().navigate(
-                    R.id.action_splachScreen_to_onbording)
+                    findNavController().navigate(
+                        R.id.action_splachScreen_to_onbording
+                    )
                 }
 
-            }
-
-            ,3000)
+            }, 3000)
 
 
     }
@@ -61,7 +63,7 @@ lateinit var binding: FragmentSplachScreenBinding
     // Show splash screen for seconds of time
     override fun onDestroy() {
         super.onDestroy()
-            prefs.edit().putBoolean("first_time", true).commit()
+        prefs.edit().putBoolean("first_time", true).commit()
         //binding = null
     }
 

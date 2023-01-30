@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.A_HomeContainer">
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/AHome"
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
         app:navGraph="@navigation/home_graph"
         android:name="androidx.navigation.fragment.NavHostFragment"
         tools:layout="@layout/fragment_home" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

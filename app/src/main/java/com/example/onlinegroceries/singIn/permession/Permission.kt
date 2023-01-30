@@ -8,28 +8,30 @@ import android.os.Build
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
-import com.example.onlinegroceries.ui.main.F_PhoneNumber
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import com.example.onlinegroceries.ui.main.F_PhoneNumber
 
 
-class Permission(var context: Context, var permession: String,
-                 var fragmentActivity: FragmentActivity): AppCompatActivity() {
+class Permission(
+    var context: Context, var permession: String,
+    var fragmentActivity: FragmentActivity
+) : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun checkPermissionIsGranted()  {
+    fun checkPermissionIsGranted() {
         when {
             ContextCompat.checkSelfPermission(
                 context,
                 Manifest.permission.SEND_SMS
             ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
-    //            findNavController(@IdRes viewId: int)
+                //            findNavController(@IdRes viewId: int)
                 context.startActivity(Intent(context, F_PhoneNumber::class.java))
             }
-            shouldShowRequestPermissionRationale(fragmentActivity,permession)
+            shouldShowRequestPermissionRationale(fragmentActivity, permession)
             -> {
                 // In an educational UI, explain to the user why your app requires this
                 // permission for a specific feature to behave as expected, and what
@@ -42,7 +44,8 @@ class Permission(var context: Context, var permession: String,
                 // You can directly ask for the permission.
                 // The registered ActivityResultCallback gets the result of this request.
                 requestPermissionLauncher.launch(
-                    Manifest.permission.SEND_SMS)
+                    Manifest.permission.SEND_SMS
+                )
             }
         }
 
@@ -70,7 +73,6 @@ class Permission(var context: Context, var permession: String,
                 // decision.
             }
         }
-
 
 
     //Dialog Explain if user refuse permission for request

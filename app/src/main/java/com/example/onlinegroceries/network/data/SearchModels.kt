@@ -1,6 +1,6 @@
-package com.example.onlinegroceries.Network.data
+package com.example.onlinegroceries.network.data
 
-data class SearchModel(
+data class SearchModels(
     val category: String,
     val description: String,
     val id: Int,

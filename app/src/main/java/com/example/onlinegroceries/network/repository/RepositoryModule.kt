@@ -1,20 +1,18 @@
-package com.example.onlinegroceries.Network.Repository
+package com.example.onlinegroceries.network.repository
 
-import com.example.onlinegroceries.Network.dataSource.remoteDataSource.ApiHelper
-import com.example.onlinegroceries.Network.dataSource.remoteDataSource.ApiHelperImpl
-import com.example.onlinegroceries.Network.dataSource.remoteDataSource.ApiService
+import com.example.onlinegroceries.network.dataSource.remoteDataSource.ApiHelper
+import com.example.onlinegroceries.network.dataSource.remoteDataSource.ApiHelperImpl
+import com.example.onlinegroceries.network.dataSource.remoteDataSource.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import org.jetbrains.annotations.NotNull
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class RepositoryModule {
-
 
 
     @Provides

@@ -23,13 +23,16 @@ class F_SingIn : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding= FragmentSingInBinding.inflate(inflater, container,
-            false)
+        binding = FragmentSingInBinding.inflate(
+            inflater, container,
+            false
+        )
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         // Initialize Permission class
         return binding.root
     }
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,16 +44,12 @@ class F_SingIn : Fragment() {
     }
 
 
-
     @RequiresApi(Build.VERSION_CODES.M)
-   private fun moveToWriteYouPhoneNumber() {
-       binding.textInputLayout.setOnClickListener {
-           findNavController().navigate(R.id.action_singIn_to_number)
-       }
-   }
-
-
-
-
-
+    private fun moveToWriteYouPhoneNumber() {
+        binding.textInputLayout.setOnClickListener {
+            findNavController().navigate(R.id.action_singIn_to_number)
+        }
     }
+
+
+}

@@ -3,14 +3,18 @@ package com.example.onlinegroceries.singIn.phoneNumber.fireBase
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import com.example.onlinegroceries.R
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.PhoneAuthCredential
+
 
 class SignInSuccess(
-    private val   auth: FirebaseAuth,
-    val   activity: FragmentActivity,
-    private val   navController: NavController,
+    private val auth: FirebaseAuth,
+    val activity: FragmentActivity,
+    private val navController: NavController,
     private val credential: PhoneAuthCredential
-                      ) {
+) {
 
     fun signInWithPhoneAuthCredential() {
         auth.signInWithCredential(credential)
@@ -32,11 +36,11 @@ class SignInSuccess(
             }
 
 
+    }
 
-}
     //update UI for user statute
     private fun updateUI(user: FirebaseUser? = auth.currentUser) {
-        if(user!=null){
+        if (user != null) {
             // move automatically to main page
             //  Toast.makeText(context, "Move to Home Screen ", Toast.LENGTH_SHORT).show()
         }

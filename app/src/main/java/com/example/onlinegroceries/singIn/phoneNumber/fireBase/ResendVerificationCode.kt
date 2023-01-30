@@ -8,21 +8,22 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
-class ResendVerificationCode (val  context: Context,
-                              val phoneNumber: String,
-                              val   auth: FirebaseAuth,
-                              val   activity: FragmentActivity,
-                              val   navController: NavController,
-                              var OTP : String,
-                              var resendToken: PhoneAuthProvider.ForceResendingToken,
+class ResendVerificationCode(
+    val context: Context,
+    val phoneNumber: String,
+    val auth: FirebaseAuth,
+    val activity: FragmentActivity,
+    val navController: NavController,
+    var OTP: String,
+    var resendToken: PhoneAuthProvider.ForceResendingToken,
 
-                              ){
+    ) {
 
 
     /**
      * ? PhoneAuthProvider.verifyPhoneNumber method to request that
     Firebase verify the user's phone number. */
-    fun resendVerificationCode( phoneNumber: String) {
+    fun resendVerificationCode(phoneNumber: String) {
 
         // [START start_phone_auth]
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -37,8 +38,6 @@ class ResendVerificationCode (val  context: Context,
     }
 
 
-
-
     private val callbacksResendCode = object : PhoneAuthProvider
     .OnVerificationStateChangedCallbacks() {
 
@@ -49,7 +48,7 @@ class ResendVerificationCode (val  context: Context,
             // 2 - Auto-retrieval. On some devices Google Play services can automatically
             //     detect the incoming verification SMS and perform verification without
             //     user action.
-           val  success=SignInSuccess(auth,activity,navController,credential)
+            val success = SignInSuccess(auth, activity, navController, credential)
             success.signInWithPhoneAuthCredential()
         }
 
@@ -73,8 +72,8 @@ class ResendVerificationCode (val  context: Context,
             // The SMS verification code has been sent to the provided phone number, we
             // now need to ask the user to enter the code and then construct a credential
             // by combining the code with a verification ID.
-            OTP=verificationId
-            resendToken=token
+            OTP = verificationId
+            resendToken = token
         }
     }
 

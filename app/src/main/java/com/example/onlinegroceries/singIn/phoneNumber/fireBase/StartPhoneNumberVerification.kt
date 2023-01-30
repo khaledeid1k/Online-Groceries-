@@ -1,26 +1,23 @@
 package com.example.onlinegroceries.singIn.phoneNumber.fireBase
 
 import android.content.Context
-import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager.TAG
 import androidx.navigation.NavController
-import com.example.onlinegroceries.R
 import com.example.onlinegroceries.ui.main.F_PhoneNumberDirections
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
-class StartPhoneNumberVerification(val  context: Context,
-                                   val phoneNumber: String,
-                                   val   auth: FirebaseAuth,
-                                   val   activity: FragmentActivity,
-                                   val   navController: NavController) {
+class StartPhoneNumberVerification(
+    val context: Context,
+    val phoneNumber: String,
+    val auth: FirebaseAuth,
+    val activity: FragmentActivity,
+    val navController: NavController
+) {
 
-    fun startPhoneNumberVerification( phoneNumber: String) {
+    fun startPhoneNumberVerification(phoneNumber: String) {
 
         // [START start_phone_auth]
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -53,7 +50,6 @@ class StartPhoneNumberVerification(val  context: Context,
         override fun onVerificationFailed(e: FirebaseException) {
             // This callback is invoked in an invalid request for verification is made,
             // for instance if the the phone number format is not valid.
-            Log.d(TAG, "loloo: $e")
 
             if (e is FirebaseAuthInvalidCredentialsException) {
                 // Invalid request
@@ -81,9 +77,11 @@ class StartPhoneNumberVerification(val  context: Context,
 //                putString("OPT",verificationId)
 //
 //            })
-            navController.navigate(F_PhoneNumberDirections.actionNumberToVerification(
-                verificationId ,phoneNumber,
-            ))
+            navController.navigate(
+                F_PhoneNumberDirections.actionNumberToVerification(
+                    verificationId, phoneNumber,
+                )
+            )
 
         }
     }

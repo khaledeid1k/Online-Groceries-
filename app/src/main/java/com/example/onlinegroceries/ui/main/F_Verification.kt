@@ -16,7 +16,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.onlinegroceries.databinding.FragmentVerificationBinding
 import com.example.onlinegroceries.singIn.phoneNumber.fireBase.ResendVerificationCode
 import com.example.onlinegroceries.singIn.phoneNumber.fireBase.SignInSuccess
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 
 class F_Verification : Fragment() {
     lateinit var binding: FragmentVerificationBinding
@@ -26,10 +28,8 @@ class F_Verification : Fragment() {
     private lateinit var code: String
     private lateinit var authenticateFirebasePhone: ResendVerificationCode
     private lateinit var prefs: SharedPreferences
-    private lateinit var navController : NavController
-    private  val args : F_VerificationArgs by navArgs()
-
-
+    private lateinit var navController: NavController
+    private val args: F_VerificationArgs by navArgs()
 
 
     override fun onCreateView(
@@ -37,8 +37,10 @@ class F_Verification : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding= FragmentVerificationBinding.inflate(inflater, container,
-            false)
+        binding = FragmentVerificationBinding.inflate(
+            inflater, container,
+            false
+        )
         return binding.root
     }
 
@@ -48,7 +50,7 @@ class F_Verification : Fragment() {
         activity?.actionBar?.hide()
         // Initialize SharedPreferences
         prefs = requireActivity().getSharedPreferences("phone", MODE_PRIVATE)
-        navController= NavHostFragment.findNavController(this)
+        navController = NavHostFragment.findNavController(this)
 
         receiveArgs()
 
@@ -76,14 +78,14 @@ class F_Verification : Fragment() {
     private fun receiveArgs() {
         auth = FirebaseAuth.getInstance()
 //        resendToken = intent.getParcelableExtra("resendToken")!!
-        phoneNumber=args.phoneNumber
-        OTP=args.otp
+        phoneNumber = args.phoneNumber
+        OTP = args.otp
 
 
     }
 
     //to resend code to user if not arrived to him
-    private fun resendCode(){
+    private fun resendCode() {
         binding.ResendCode.setOnClickListener {
 //            authenticateFirebasePhone.resendVerificationCode(phoneNumber)
 //            visibleButtonResendCode()
@@ -91,18 +93,19 @@ class F_Verification : Fragment() {
     }
 
     // to check send code is true
-    private fun verificationOfCode(){
+    private fun verificationOfCode() {
         binding.VerificatOfCode.setOnClickListener {
             code = binding.CodeOfVerificat.text?.trim().toString()
             if (code.length == 6) {
                 val credential: PhoneAuthCredential = PhoneAuthProvider
                     .getCredential(OTP, code)
-          val  success=SignInSuccess(
-              auth,
-              requireActivity(),
-              navController,
-              credential)
-                  success.signInWithPhoneAuthCredential()
+                val success = SignInSuccess(
+                    auth,
+                    requireActivity(),
+                    navController,
+                    credential
+                )
+                success.signInWithPhoneAuthCredential()
 
 
             } else {
@@ -111,11 +114,9 @@ class F_Verification : Fragment() {
             }
 
 
-
         }
 
     }
-
 
 
 }

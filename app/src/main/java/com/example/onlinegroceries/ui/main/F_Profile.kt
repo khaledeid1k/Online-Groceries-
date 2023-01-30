@@ -19,17 +19,19 @@ import com.example.onlinegroceries.databinding.FragmentProfileBinding
 
 class F_Profile : Fragment() {
     private lateinit var getResult: ActivityResultLauncher<Intent>
-    lateinit var binding : FragmentProfileBinding
-    var addImage: Boolean =true
-    private lateinit var  prefsProfile: SharedPreferences
+    lateinit var binding: FragmentProfileBinding
+    var addImage: Boolean = true
+    private lateinit var prefsProfile: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding= FragmentProfileBinding.inflate(inflater, container,
-            false)
+        binding = FragmentProfileBinding.inflate(
+            inflater, container,
+            false
+        )
         return binding.root
     }
 
@@ -39,8 +41,9 @@ class F_Profile : Fragment() {
         activity?.actionBar?.hide()
 
         // Initialize SharedPreferences
-        prefsProfile= requireActivity().getSharedPreferences(
-            "profile", MODE_PRIVATE)
+        prefsProfile = requireActivity().getSharedPreferences(
+            "profile", MODE_PRIVATE
+        )
 
         resultImageChooser()
         addProfilePhoto()
@@ -49,8 +52,8 @@ class F_Profile : Fragment() {
 
     // click to chose image from gallery
     // the Select Image Button is clicked
-    private fun addProfilePhoto(){
-        binding.addPhoto.setOnClickListener{
+    private fun addProfilePhoto() {
+        binding.addPhoto.setOnClickListener {
             imageChooser()
         }
     }
@@ -62,15 +65,16 @@ class F_Profile : Fragment() {
         intent.type = "image/*"
         getResult.launch(intent)
 
-      }
+    }
 
     //result return from intent of choosing photo from gallery
-    private fun resultImageChooser(){
+    private fun resultImageChooser() {
         // Receiver
-         getResult =
+        getResult =
             registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult()) {
-                if(it.resultCode == Activity.RESULT_OK) {
+                ActivityResultContracts.StartActivityForResult()
+            ) {
+                if (it.resultCode == Activity.RESULT_OK) {
                     binding.addPhoto.setImageURI(it.data?.data)
                     if (it.data?.data.toString().isNotEmpty()) {
                         addImage = false
@@ -81,16 +85,17 @@ class F_Profile : Fragment() {
     }
 
     //move to Home Screen after add photo and name
-    private fun submitProfile(){
-        binding.SubmitProfile.setOnClickListener{
-            if(binding.YourName.text?.isNotEmpty() == true){
-                prefsProfile.edit().putString("name",binding.YourName.text.toString()).apply()
-                if(!addImage){
-                 findNavController().navigate(R.id.action_profile_to_homeG)
-                }else{
-                    Toast.makeText(requireActivity(), "Pleas add Profile Image", Toast.LENGTH_SHORT).show()
+    private fun submitProfile() {
+        binding.SubmitProfile.setOnClickListener {
+            if (binding.YourName.text?.isNotEmpty() == true) {
+                prefsProfile.edit().putString("name", binding.YourName.text.toString()).apply()
+                if (!addImage) {
+                    findNavController().navigate(R.id.action_profile_to_homeG)
+                } else {
+                    Toast.makeText(requireActivity(), "Pleas add Profile Image", Toast.LENGTH_SHORT)
+                        .show()
                 }
-            }else{
+            } else {
                 Toast.makeText(requireActivity(), "Pleas add Your Name", Toast.LENGTH_SHORT).show()
             }
 

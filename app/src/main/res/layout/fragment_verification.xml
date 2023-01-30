@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.F_Verification">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -14,6 +15,7 @@
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_20sdp"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="@dimen/_280sdp"
@@ -50,27 +52,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/enter_code"
+        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="@dimen/_39sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/code"
+        android:layout_marginTop="@dimen/_2sdp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/enter_code"
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="@dimen/_39sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/code"
-            android:layout_marginTop="@dimen/_2sdp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:id="@+id/CodeOfVerificat"
-                android:inputType="number"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:padding="@dimen/_5sdp">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
+            android:id="@+id/CodeOfVerificat"
+            android:inputType="number"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"></com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
