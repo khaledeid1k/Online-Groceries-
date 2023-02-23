@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.F_ExclusiveOffer">
+    tools:context=".ui.home.exclusiveoffer.F_ExclusiveOffer">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -22,13 +22,16 @@
         android:textAppearance="@style/exclusive_o" />
 
     <TextView
-        android:id="@+id/seeAll"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/_10sdp"
+        android:id="@+id/Ex_seeAll"
         android:layout_width="wrap_content"
-        android:textColor="#53b175"
         android:layout_height="wrap_content"
-        android:text="@string/SeeAll" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="@string/SeeAll"
+        android:textColor="#53b175" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recycle_exclusive"

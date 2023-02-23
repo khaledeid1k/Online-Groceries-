@@ -31,5 +31,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="BestSelling">Best Selling</string>
     <string name="Groceries">Groceries</string>
-
+    <string name="shareProduct">Hello bro,\n%1$s product is very awesome and have a very cheap price, it just cost %2$.2f$.\n
+        You can buy it now with Online Groceries app.</string>
+    <string name="price">%.2f$</string>
 </resources>

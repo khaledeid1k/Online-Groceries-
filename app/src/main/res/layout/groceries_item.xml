@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="model"
+            type ="com.example.onlinegroceries.network.data.ProductModel.ProductModelItem"
+            />
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -29,7 +37,8 @@
                 <ImageView
                     android:id="@+id/GroceriesImage"
                     android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_80sdp" />
+                    android:layout_height="@dimen/_80sdp"
+                 app:imageUrl="@{model.image}"/>
 
                 <TextView
                     android:id="@+id/Groceries_TextView"
@@ -41,7 +50,9 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:gravity="center"
-                    android:theme="@style/textTheme" />
+                    android:theme="@style/textTheme"
+                    android:text="@{model.title}"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

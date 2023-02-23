@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.onlinegroceries.ui.start.F_SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreen_to_onBoarding"
+            app:destination="@id/onBoarding"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true">
+
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/onBoarding"
+        android:name="com.example.onlinegroceries.ui.start.F_OnBoarding"
+        android:label="fragment_onBoarding">
+        <action
+            android:id="@+id/action_onBoarding_to_homeG"
+            app:destination="@id/homeG" />
+        <action
+            android:id="@+id/action_onBoarding_to_singIn"
+            app:destination="@id/singIn" />
+    </fragment>
+    <include app:graph="@navigation/home_graph" />
+    <include app:graph="@navigation/singin_graph" />
+</navigation>

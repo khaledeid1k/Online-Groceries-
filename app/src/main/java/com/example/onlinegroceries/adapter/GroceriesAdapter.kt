@@ -6,36 +6,35 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlinegroceries.network.data.ProductResponse
 import com.example.onlinegroceries.R
+import com.example.onlinegroceries.databinding.GroceriesItemBinding
 
 class GroceriesAdapter (
     private var productsList: ProductResponse,
     var context: Context
 ) : RecyclerView.Adapter<GroceriesAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var productImage = itemView.findViewById<ImageView>(R.id.GroceriesImage)!!
-        var title = itemView.findViewById<TextView>(R.id.Groceries_TextView)!!
 
+    class ViewHolder(itemView: GroceriesItemBinding) :
+        RecyclerView.ViewHolder(itemView.root) {
+         var  groceriesItemBinding :GroceriesItemBinding=itemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.groceries_item, parent, false)
-        return ViewHolder(view)
+        val groceriesItemBinding: GroceriesItemBinding= DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),R.layout.groceries_item,parent,false
+        )
+        return ViewHolder(groceriesItemBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val productList = productsList[position]
-        holder.title.text = productList.title
-        val url: String? = productList.image
-        Glide
-            .with(context)
-            .load(url)
-            .into(holder.productImage)
+        holder.groceriesItemBinding.model=productList
     }
 
     override fun getItemCount(): Int {

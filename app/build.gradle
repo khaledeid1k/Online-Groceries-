@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id "androidx.navigation.safeargs.kotlin"
+    id 'kotlin-parcelize'
+
 
 }
 
@@ -44,7 +46,7 @@ android {
 }
 
 dependencies {
-    //    // google map
+        // google map
     //  implementation 'com.google.maps.android:android-maps-utils:2.3.0'
 
     //Spinner
@@ -106,6 +108,7 @@ dependencies {
     //Android Image Slider
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
     implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
+
 
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'

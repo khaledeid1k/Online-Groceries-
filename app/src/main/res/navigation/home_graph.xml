@@ -12,6 +12,14 @@
         <action
             android:id="@+id/action_FHome_to_f_Search2"
             app:destination="@id/f_Search2" />
+        <action
+            android:id="@+id/action_FHome_to_exclusiveOfferProducts"
+            app:destination="@id/exclusiveOfferProducts" />
+        <action
+            android:id="@+id/action_FHome_to_showProduct"
+            app:destination="@id/showProduct" >
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/f_Search2"
@@ -19,6 +27,50 @@
         android:label="fragment_f__search"
         tools:layout="@layout/fragment_search">
 
+        <action
+            android:id="@+id/action_f_Search2_to_showProduct"
+            app:destination="@id/showProduct" />
     </fragment>
+    <fragment
+        android:id="@+id/exclusiveOfferProducts"
+        android:name="com.example.onlinegroceries.ui.home.exclusiveoffer.ExclusiveOfferProducts"
+        android:label="fragment_exclusive_offer_products"
+        tools:layout="@layout/fragment_exclusive_offer_products" >
+        <action
+            android:id="@+id/action_exclusiveOfferProducts_to_showProduct"
+            app:destination="@id/showProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/showProduct"
+        android:name="com.example.onlinegroceries.ui.home.ShowProduct"
+        android:label="ShowProduct" >
+        <argument
+            android:name="productModel"
+            app:argType="com.example.onlinegroceries.network.data.ProductModel"
+          />
+        <argument
+            android:name="position"
+            app:argType="integer"/>
+    </fragment>
+    <fragment
+        android:id="@+id/account"
+        android:name="com.example.onlinegroceries.ui.account.Account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/favorite"
+        android:name="com.example.onlinegroceries.ui.favorite.Favorite"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.example.onlinegroceries.ui.cart.Cart"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/explore"
+        android:name="com.example.onlinegroceries.ui.explore.Explore"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
 
 </navigation>

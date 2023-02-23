@@ -119,9 +119,9 @@ class F_HeaderOfHome : Fragment() {
     }
 
     private fun moveToSearchScreen() {
-        binding.shopSearchEditText.setOnTouchListener { p0, p1 ->
+        binding.shopSearchEditText.setOnTouchListener { _, p1 ->
             if (p1.action == MotionEvent.ACTION_DOWN) {
-                parentFragmentManager.findFragmentById(R.id.AHome)
+               // parentFragmentManager.findFragmentById(R.id.AHome)
                 findNavController().navigate(R.id.action_FHome_to_f_Search2)
             }
             return@setOnTouchListener false

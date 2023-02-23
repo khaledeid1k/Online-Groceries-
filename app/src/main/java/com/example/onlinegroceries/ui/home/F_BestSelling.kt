@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +24,7 @@ class F_BestSelling : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBestSellingBinding.inflate(inflater, container, false)
 
         // Inflate the layout for this fragment
@@ -63,7 +64,12 @@ class F_BestSelling : Fragment() {
 
 
     private fun installViews(productList: ProductResponse) {
-        productsAdapter = ProductsAdapter(productList, requireContext())
+        productsAdapter = ProductsAdapter(productList)
+        {
+                y,t->
+
+
+        }
         recyclerView.adapter = productsAdapter
     }
 

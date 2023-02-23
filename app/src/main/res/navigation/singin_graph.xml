@@ -1,71 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/splachScreen">
-
-    <fragment
-        android:id="@+id/splachScreen"
-        android:name="com.example.onlinegroceries.ui.main.F_SplashScreen"
-        android:label="fragment_splach_screen"
-
-        >
-        <action
-            android:id="@+id/action_splachScreen_to_onbording"
-            app:destination="@id/onbording"
-            app:popUpTo="@id/splachScreen"
-            app:popUpToInclusive="true">
-
-        </action>
-    </fragment>
-    <fragment
-        android:id="@+id/onbording"
-        android:name="com.example.onlinegroceries.ui.main.F_OnBoarding"
-        android:label="fragment_onbording">
-        <action
-            android:id="@+id/action_onbording_to_singIn"
-            app:destination="@id/singIn" />
-        <action
-            android:id="@+id/action_onbording_to_homeG"
-            app:destination="@id/homeG" />
-        <action
-            android:id="@+id/action_onbording_to_profile"
-            app:destination="@id/profile" />
+    android:id="@+id/singIn_graph"
+    app:startDestination="@id/singIn">
 
 
-    </fragment>
-    <fragment
-        android:id="@+id/selectlsocation"
-        android:name="com.example.onlinegroceries.ui.main.F_SelectLocation"
-        android:label="fragment_selectlsocation">
-        <action
-            android:id="@+id/action_selectlsocation_to_profile"
-            app:destination="@id/profile" />
-    </fragment>
     <fragment
         android:id="@+id/singIn"
-        android:name="com.example.onlinegroceries.ui.main.F_SingIn"
+        android:name="com.example.onlinegroceries.ui.singIn.F_SingIn"
         android:label="activity_sing_in">
         <action
             android:id="@+id/action_singIn_to_number"
             app:destination="@id/number" />
     </fragment>
+
     <fragment
         android:id="@+id/number"
-        android:name="com.example.onlinegroceries.ui.main.F_PhoneNumber"
+        android:name="com.example.onlinegroceries.ui.singIn.F_PhoneNumber"
         android:label="fragment_number">
         <action
             android:id="@+id/action_number_to_verification"
             app:destination="@id/verification" />
     </fragment>
+
     <fragment
         android:id="@+id/verification"
-        android:name="com.example.onlinegroceries.ui.main.F_Verification"
+        android:name="com.example.onlinegroceries.ui.singIn.F_Verification"
         android:label="fragment_verification">
         <action
             android:id="@+id/action_verification_to_selectlsocation"
-            app:destination="@id/selectlsocation"
-            app:popUpTo="@id/onbording"
+            app:destination="@id/selectLocation"
+            app:popUpTo="@id/onBoarding"
             app:popUpToInclusive="false" />
         <argument
             android:name="otp"
@@ -74,16 +39,24 @@
             android:name="phoneNumber"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/selectLocation"
+        android:name="com.example.onlinegroceries.ui.singIn.F_SelectLocation"
+        android:label="fragment_selectLocation">
+        <action
+            android:id="@+id/action_selectlsocation_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
+
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.onlinegroceries.ui.main.F_Profile"
+        android:name="com.example.onlinegroceries.ui.profile.F_Profile"
         android:label="fragment_profile">
         <action
             android:id="@+id/action_profile_to_homeG"
             app:destination="@id/homeG" />
-
-
     </fragment>
-
     <include app:graph="@navigation/home_graph" />
+
 </navigation>
