@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/splash_scre"
-    tools:context=".ui.start.F_SplashScreen">
+    tools:context=".ui.start.SplashScreen">
 
 
     <LinearLayout

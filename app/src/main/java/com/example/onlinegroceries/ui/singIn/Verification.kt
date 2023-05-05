@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 
-class F_Verification : Fragment() {
+class Verification : Fragment() {
     lateinit var binding: FragmentVerificationBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var OTP: String
@@ -29,7 +29,7 @@ class F_Verification : Fragment() {
     private lateinit var authenticateFirebasePhone: ResendVerificationCode
     private lateinit var prefs: SharedPreferences
     private lateinit var navController: NavController
-    private val args: F_VerificationArgs by navArgs()
+    private val args: VerificationArgs by navArgs()
 
 
     override fun onCreateView(

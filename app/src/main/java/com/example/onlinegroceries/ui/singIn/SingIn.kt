@@ -13,7 +13,7 @@ import com.example.onlinegroceries.databinding.FragmentSingInBinding
 import com.google.firebase.auth.FirebaseAuth
 
 
-class F_SingIn : Fragment() {
+class SingIn : Fragment() {
     private lateinit var binding: FragmentSingInBinding
     private lateinit var auth: FirebaseAuth
 

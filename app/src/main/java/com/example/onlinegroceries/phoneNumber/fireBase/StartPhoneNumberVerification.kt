@@ -3,7 +3,7 @@ package com.example.onlinegroceries.phoneNumber.fireBase
 import android.content.Context
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
-import com.example.onlinegroceries.ui.singIn.F_PhoneNumberDirections
+import com.example.onlinegroceries.ui.singIn.PhoneNumberDirections
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -78,7 +78,7 @@ class StartPhoneNumberVerification(
 //
 //            })
             navController.navigate(
-                F_PhoneNumberDirections.actionNumberToVerification(
+                PhoneNumberDirections.actionNumberToVerification(
                     verificationId, phoneNumber,
                 )
             )

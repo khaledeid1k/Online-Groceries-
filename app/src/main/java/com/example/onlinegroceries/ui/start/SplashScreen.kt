@@ -14,7 +14,7 @@ import androidx.preference.PreferenceManager
 import com.example.onlinegroceries.R
 import com.example.onlinegroceries.databinding.FragmentSplashScreenBinding
 
-class F_SplashScreen : Fragment() {
+class SplashScreen : Fragment() {
     lateinit var binding: FragmentSplashScreenBinding
     lateinit var prefs: SharedPreferences
 

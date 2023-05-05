@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreen"
-        android:name="com.example.onlinegroceries.ui.start.F_SplashScreen"
+        android:name="com.example.onlinegroceries.ui.start.SplashScreen"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoarding"
-        android:name="com.example.onlinegroceries.ui.start.F_OnBoarding"
+        android:name="com.example.onlinegroceries.ui.start.OnBoarding"
         android:label="fragment_onBoarding">
         <action
             android:id="@+id/action_onBoarding_to_homeG"

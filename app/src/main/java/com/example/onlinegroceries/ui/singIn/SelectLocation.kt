@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.onlinegroceries.R
 import com.example.onlinegroceries.databinding.FragmentSelectLocationBinding
 
-class F_SelectLocation : Fragment() {
+class SelectLocation : Fragment() {
     lateinit var binding: FragmentSelectLocationBinding
 
 

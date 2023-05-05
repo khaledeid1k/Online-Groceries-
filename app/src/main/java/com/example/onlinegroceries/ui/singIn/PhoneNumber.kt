@@ -16,7 +16,7 @@ import com.example.onlinegroceries.phoneNumber.fireBase.StartPhoneNumberVerifica
 import com.google.firebase.auth.FirebaseAuth
 
 
-class F_PhoneNumber : Fragment() {
+class PhoneNumber : Fragment() {
     private var codeCountry: String = "+20"
     private lateinit var binding: FragmentNumberBinding
     private lateinit var authenticateFirebasePhone: StartPhoneNumberVerification

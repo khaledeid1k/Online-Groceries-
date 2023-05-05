@@ -1,8 +1,7 @@
-package com.example.onlinegroceries.utility.permession
+package com.example.onlinegroceries.utility
 
-import android.Manifest
+
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.activity.result.contract.ActivityResultContracts
@@ -11,13 +10,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
-import com.example.onlinegroceries.ui.singIn.F_PhoneNumber
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 
 class Permission(
-    var context: Context, var permession: String,
-    var fragmentActivity: FragmentActivity
+    var context: Context, var permession: String,val moveTo :Int,
+    var fragmentActivity: Fragment
 ) : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -25,13 +24,14 @@ class Permission(
         when {
             ContextCompat.checkSelfPermission(
                 context,
-                Manifest.permission.SEND_SMS
+                permession
             ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
                 //            findNavController(@IdRes viewId: int)
-                context.startActivity(Intent(context, F_PhoneNumber::class.java))
+                fragmentActivity.findNavController().navigate(moveTo)
             }
-            shouldShowRequestPermissionRationale(fragmentActivity, permession)
+            shouldShowRequestPermissionRationale(fragmentActivity.requireActivity()
+                , permession)
             -> {
                 // In an educational UI, explain to the user why your app requires this
                 // permission for a specific feature to behave as expected, and what
@@ -44,7 +44,7 @@ class Permission(
                 // You can directly ask for the permission.
                 // The registered ActivityResultCallback gets the result of this request.
                 requestPermissionLauncher.launch(
-                    Manifest.permission.SEND_SMS
+                    permession
                 )
             }
         }
@@ -60,17 +60,18 @@ class Permission(
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
+        ) { isGranted ->
             if (isGranted) {
                 // Permission is granted. Continue the action or workflow in your
                 // app.
-                context.startActivity(Intent(context, F_PhoneNumber::class.java))
+                fragmentActivity.findNavController().navigate(moveTo)
             } else {
                 // Explain to the user that the feature is unavailable because the
                 // feature requires a permission that the user has denied. At the
                 // same time, respect the user's decision. Don't link to system
                 // settings in an effort to convince the user to change their
                 // decision.
+                showInContextUI()
             }
         }
 

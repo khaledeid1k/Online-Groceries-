@@ -11,7 +11,7 @@ import com.example.onlinegroceries.databinding.FragmentOnboardingBinding
 import com.google.firebase.auth.FirebaseAuth
 
 
-class F_OnBoarding : Fragment() {
+class OnBoarding : Fragment() {
     lateinit var binding: FragmentOnboardingBinding
     private lateinit var auth: FirebaseAuth
     override fun onCreateView(

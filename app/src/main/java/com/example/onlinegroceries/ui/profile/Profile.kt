@@ -15,9 +15,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onlinegroceries.R
 import com.example.onlinegroceries.databinding.FragmentProfileBinding
+import com.example.onlinegroceries.utility.Constants
 
 
-class F_Profile : Fragment() {
+class Profile : Fragment() {
     private lateinit var getResult: ActivityResultLauncher<Intent>
     lateinit var binding: FragmentProfileBinding
     var addImage: Boolean = true
@@ -42,7 +43,7 @@ class F_Profile : Fragment() {
 
         // Initialize SharedPreferences
         prefsProfile = requireActivity().getSharedPreferences(
-            "profile", MODE_PRIVATE
+            Constants.prefsProfile, MODE_PRIVATE
         )
 
         resultImageChooser()
@@ -78,7 +79,7 @@ class F_Profile : Fragment() {
                     binding.addPhoto.setImageURI(it.data?.data)
                     if (it.data?.data.toString().isNotEmpty()) {
                         addImage = false
-                        prefsProfile.edit().putString("image", it.data?.data.toString()).apply()
+                        prefsProfile.edit().putString(Constants.prefsImage, it.data?.data.toString()).apply()
                     }
                 }
             }
@@ -88,7 +89,7 @@ class F_Profile : Fragment() {
     private fun submitProfile() {
         binding.SubmitProfile.setOnClickListener {
             if (binding.YourName.text?.isNotEmpty() == true) {
-                prefsProfile.edit().putString("name", binding.YourName.text.toString()).apply()
+                prefsProfile.edit().putString(Constants.prefsName, binding.YourName.text.toString()).apply()
                 if (!addImage) {
                     findNavController().navigate(R.id.action_profile_to_homeG)
                 } else {

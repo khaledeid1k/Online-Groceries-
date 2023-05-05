@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/singIn"
-        android:name="com.example.onlinegroceries.ui.singIn.F_SingIn"
+        android:name="com.example.onlinegroceries.ui.singIn.SingIn"
         android:label="activity_sing_in">
         <action
             android:id="@+id/action_singIn_to_number"
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/number"
-        android:name="com.example.onlinegroceries.ui.singIn.F_PhoneNumber"
+        android:name="com.example.onlinegroceries.ui.singIn.PhoneNumber"
         android:label="fragment_number">
         <action
             android:id="@+id/action_number_to_verification"
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/verification"
-        android:name="com.example.onlinegroceries.ui.singIn.F_Verification"
+        android:name="com.example.onlinegroceries.ui.singIn.Verification"
         android:label="fragment_verification">
         <action
             android:id="@+id/action_verification_to_selectlsocation"
@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/selectLocation"
-        android:name="com.example.onlinegroceries.ui.singIn.F_SelectLocation"
+        android:name="com.example.onlinegroceries.ui.singIn.SelectLocation"
         android:label="fragment_selectLocation">
         <action
             android:id="@+id/action_selectlsocation_to_profile"
@@ -51,7 +51,7 @@
 
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.onlinegroceries.ui.profile.F_Profile"
+        android:name="com.example.onlinegroceries.ui.profile.Profile"
         android:label="fragment_profile">
         <action
             android:id="@+id/action_profile_to_homeG"

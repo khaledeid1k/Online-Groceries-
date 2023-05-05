@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fhome"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layoutDescription="@xml/fragment_shop_scene"
-    tools:context=".ui.home.header.F_HeaderOfHome">
+    android:layout_height="wrap_content"
+    app:layoutDescription="@xml/fragment_shop_scene">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
