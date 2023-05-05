@@ -1,69 +1,16 @@
-package com.example.onlinegroceries.ui.home.header
+package com.example.onlinegroceries.ui.home
 
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
-import com.example.onlinegroceries.network.data.SliderData
 import com.example.onlinegroceries.R
 import com.example.onlinegroceries.adapter.SliderAdapter
 import com.example.onlinegroceries.databinding.FragmentHeaderOfHomeBinding
+import com.example.onlinegroceries.network.data.SliderData
 import com.smarteist.autoimageslider.SliderView
 
-
-class F_HeaderOfHome : Fragment() {
-
-    lateinit var binding: FragmentHeaderOfHomeBinding
-    lateinit var prefs: SharedPreferences
-
-    init {
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        binding = FragmentHeaderOfHomeBinding.inflate(
-            inflater, container,
-            false
-        )
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // Hidden toolbar
-        activity?.actionBar?.hide()
-
-        imageSlider()
-        getNameUser()
-        getImageUser()
-        moveToSearchScreen()
-    }
-
-    private fun getNameUser() {
-        prefs = requireActivity().getSharedPreferences(
-            "profile", MODE_PRIVATE
-        )
-        binding.userNameTextView.text = prefs.getString("name", null)
-    }
-
-    private fun getImageUser() {
-        val imageUrl = prefs.getString("image", null)
-        Glide.with(requireActivity()).load(imageUrl).into(
-            binding.userImageImageView
-        )
-    }
-
-    private fun imageSlider() {
+class HeaderHome(private val fragment: Fragment) {
+    fun imageSlider(binding: FragmentHeaderOfHomeBinding) {
         // we are creating array list for storing our image urls.
         // we are creating array list for storing our image urls.
         val sliderDataArrayList: ArrayList<SliderData> = ArrayList()
@@ -82,7 +29,7 @@ class F_HeaderOfHome : Fragment() {
         // passing this array list inside our adapter class.
 
         // passing this array list inside our adapter class.
-        val adapter = SliderAdapter(requireContext(), sliderDataArrayList)
+        val adapter = SliderAdapter(fragment.requireContext(), sliderDataArrayList)
 
         // below method is used to set auto cycle direction in left to
         // right direction you can change according to requirement.
@@ -118,14 +65,14 @@ class F_HeaderOfHome : Fragment() {
         sliderView.startAutoCycle()
     }
 
-    private fun moveToSearchScreen() {
+    fun moveToSearchScreen(binding: FragmentHeaderOfHomeBinding) {
         binding.shopSearchEditText.setOnTouchListener { _, p1 ->
             if (p1.action == MotionEvent.ACTION_DOWN) {
-               // parentFragmentManager.findFragmentById(R.id.AHome)
-                findNavController().navigate(R.id.action_FHome_to_f_Search2)
+                // parentFragmentManager.findFragmentById(R.id.AHome)
+                fragment.findNavController().navigate(R.id.action_FHome_to_f_Search2)
             }
             return@setOnTouchListener false
         }
     }
-}
 
+}

@@ -24,8 +24,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class ExclusiveOfferProducts : Fragment() {
     lateinit var binding: FragmentExclusiveOfferProductsBinding
     private lateinit var recyclerView: RecyclerView
-    private lateinit var productsAdapter: ProductsAdapter
-    private val viewModel: ProductsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,35 +42,9 @@ class ExclusiveOfferProducts : Fragment() {
         // initialize  recyclerView
         recyclerView = binding.RecycleExclusive
 
-        observeViewModel()
         backToHome()
     }
 
-    private fun observeViewModel() {
-
-        viewModel.productsList.observe(requireActivity()) {
-            when (it.status) {
-                Status.SUCCESS -> it.data?.let { it1 ->
-                    installViews(it1)
-                }
-                Status.LOADING -> {
-
-
-                }
-                Status.ERROR -> {
-
-                }
-            }
-        }
-    }
-    private fun installViews(productList: ProductResponse) {
-        productsAdapter = ProductsAdapter(productList)
-        {
-                y,t->
-
-        }
-        recyclerView.adapter = productsAdapter
-    }
     private fun backToHome(){
         binding.backToHomeFromEX.setOnClickListener {
                       //   parentFragmentManager.findFragmentById(R.id.AHome)

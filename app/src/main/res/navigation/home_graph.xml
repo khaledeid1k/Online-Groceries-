@@ -6,7 +6,7 @@
     app:startDestination="@id/FHome">
     <fragment
         android:id="@+id/FHome"
-        android:name="com.example.onlinegroceries.ui.home.F_Home"
+        android:name="com.example.onlinegroceries.ui.home.Home"
         android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/f_Search2"
-        android:name="com.example.onlinegroceries.ui.home.header.F_Search"
+        android:name="com.example.onlinegroceries.ui.home.header.Search"
         android:label="fragment_f__search"
         tools:layout="@layout/fragment_search">
 
@@ -46,11 +46,7 @@
         android:label="ShowProduct" >
         <argument
             android:name="productModel"
-            app:argType="com.example.onlinegroceries.network.data.ProductModel"
-          />
-        <argument
-            android:name="position"
-            app:argType="integer"/>
+            app:argType="com.example.onlinegroceries.network.data.ProductModel$ProductModelItem" />
     </fragment>
     <fragment
         android:id="@+id/account"

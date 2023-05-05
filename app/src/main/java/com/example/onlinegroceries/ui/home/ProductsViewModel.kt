@@ -1,5 +1,6 @@
 package com.example.onlinegroceries.ui.home
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.onlinegroceries.network.repository.MainRepository
@@ -17,8 +18,8 @@ class ProductsViewModel
     private var _errorMessage = MutableLiveData<String>()
     private var _productsList = MutableLiveData<Resource<ProductResponse>>()
 
-    val errorMessage: MutableLiveData<String> get() = _errorMessage
-    val productsList: MutableLiveData<Resource<ProductResponse>> get() = _productsList
+    val errorMessage: LiveData<String> get() = _errorMessage
+    val productsList: LiveData<Resource<ProductResponse>> get() = _productsList
 
     // if i want to cansel Coroutine
     private var job: Job? = null

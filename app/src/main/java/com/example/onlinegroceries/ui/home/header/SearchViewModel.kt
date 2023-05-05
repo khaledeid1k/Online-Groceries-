@@ -1,5 +1,6 @@
 package com.example.onlinegroceries.ui.home.header
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,26 +15,24 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-
 class SearchViewModel @Inject constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
     // Backing property
     private var _errorMessage = MutableLiveData<String>()
     private var _productsList = MutableLiveData<Resource<SearchModels>>()
+     val id = MutableLiveData<String>()
 
-    val errorMessage: MutableLiveData<String> get() = _errorMessage
-    val productsList: MutableLiveData<Resource<SearchModels>>
-        get()
-        = _productsList
+    val errorMessage: LiveData<String> get() = _errorMessage
+    val productsList: LiveData<Resource<SearchModels>> get() = _productsList
 
     // if i want to cansel Coroutine
     private var job: Job? = null
 
     //  search about product from Api
-    fun getSearch(id: Int) {
+    fun getSearch() {
         viewModelScope.launch {
-            mainRepository.getSearch(id).let {
+            mainRepository.getSearch(id.value?.toInt()!!).let {
                 withContext(Dispatchers.Main) {
                     if (it.isSuccessful) {
                         _productsList.postValue(Resource.success(it.body()))
