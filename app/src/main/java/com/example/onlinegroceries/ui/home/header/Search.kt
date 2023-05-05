@@ -3,81 +3,68 @@ package com.example.onlinegroceries.ui.home.header
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.onlinegroceries.R
 import com.example.onlinegroceries.network.data.SearchModels
 import com.example.onlinegroceries.adapter.SearchAdapter
+import com.example.onlinegroceries.base.BaseFragment
 import com.example.onlinegroceries.databinding.FragmentSearchBinding
+import com.example.onlinegroceries.ui.home.ProductsViewModel
 import com.example.onlinegroceries.utility.Status
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class F_Search : Fragment() {
+class Search : BaseFragment<FragmentSearchBinding>() {
+    override fun getLayoutId() = R.layout.fragment_search
 
-    lateinit var binding: FragmentSearchBinding
-    private lateinit var recyclerView: RecyclerView
     private lateinit var productsAdapter: SearchAdapter
     private val viewModel: SearchViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override val LOG_TAG: String
+        get() = "Search"
 
-    ): View {
-
-        // Inflate the layout for this fragment
-        binding = FragmentSearchBinding.inflate(
-            inflater, container,
-            false
-        )
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // Hidden toolbar
-        activity?.actionBar?.hide()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding.apply {
+            viewmodel=viewModel
+            lifecycleOwner=this@Search
+        }
         // initialize  recyclerView
-        recyclerView = binding.searchItems
-        showkeyboard()
+        showKeyBoard()
         searchProduct()
-
     }
 
     private fun searchProduct() {
 
         binding.search.setOnEditorActionListener { _, a, _ ->
             if (a == EditorInfo.IME_ACTION_SEARCH) {
-                val query = binding.search.text.toString()
-                if (query.isNotEmpty()) {
-                    viewModel.getSearch(query.toInt())
+                    viewModel.getSearch()
+                  hideKeyboard(binding.search)
                     observeViewModel()
-                }
-
-
             }
             return@setOnEditorActionListener false
         }
     }
 
 
-    private fun observeViewModel() {
+    override fun observeViewModel() {
 
         viewModel.productsList.observe(requireActivity()) {
             when (it.status) {
                 Status.SUCCESS -> it.data?.let { it1 ->
-
                     installViews(it1)
                 }
                 Status.LOADING -> {
@@ -95,11 +82,11 @@ class F_Search : Fragment() {
 
 
     private fun installViews(productList: SearchModels) {
-        val layoutManager: RecyclerView.LayoutManager =
-            GridLayoutManager(requireContext(), 2)
-        recyclerView.layoutManager = layoutManager
         productsAdapter = SearchAdapter(productList, requireContext())
-        recyclerView.adapter = productsAdapter
+        binding.searchItems.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = productsAdapter
+        }
     }
 
     private fun showSnackBar(
@@ -124,12 +111,16 @@ class F_Search : Fragment() {
         snackBar.show()
     }
 
-    fun showkeyboard() {
+    private fun showKeyBoard() {
         val editText = binding.search
         editText.requestFocus()
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+    }
+    fun hideKeyboard(view: View) {
+        val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
 

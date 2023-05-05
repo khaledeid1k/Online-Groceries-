@@ -6,46 +6,42 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.onlinegroceries.R
+import com.example.onlinegroceries.base.BaseFragment
 import com.example.onlinegroceries.databinding.FragmentShowProductBinding
+import com.example.onlinegroceries.network.data.ProductModel
 import com.example.onlinegroceries.utility.extention.closeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class ShowProduct : Fragment() {
-    lateinit var binding: FragmentShowProductBinding
+class ShowProduct :BaseFragment<FragmentShowProductBinding>() {
+    override fun getLayoutId()=R.layout.fragment_show_product
     private val args: ShowProductArgs by navArgs()
-    private val productModelItem by lazy { args.productModel[args.position] }
+    private val productModelItem: ProductModel.ProductModelItem get() = args.productModel
     private var productQuantity = 1
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        binding = FragmentShowProductBinding.inflate(inflater, container, false)
-
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_show_product, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding.apply {
+            //because when update view in xml with dataBinding ,
+            // the viewMode need to know lifeCycle of activity for that we add this line
+            lifecycleOwner=this@ShowProduct
             fragment = this@ShowProduct
+            // to initialize the value of variable in xml
             product = productModelItem
-            return this.root
         }
-
     }
 
+    override val LOG_TAG: String
+        get() = "ShowProduct"
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // Hidden toolbar
-        activity?.actionBar?.hide()
-
+    override fun observeViewModel() {
+        TODO("Not yet implemented")
     }
 
     fun backToPreviousScreen() {
@@ -56,9 +52,7 @@ class ShowProduct : Fragment() {
         val intent = Intent(Intent.ACTION_SEND)
         val shareBody =
             getString(
-                R.string.shareProduct, productModelItem.title,
-                productModelItem.price
-            )
+                R.string.shareProduct, productModelItem.title, productModelItem.price)
 
         intent.type = "text/plain"
         intent.putExtra(Intent.EXTRA_TEXT, shareBody)
