@@ -11,7 +11,7 @@
 
         <variable
             name="product"
-            type="com.example.onlinegroceries.network.data.ProductModel.ProductModelItem" />
+            type="com.example.onlinegroceries.network.data.ProductModelItem" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="model"
-            type ="com.example.onlinegroceries.network.data.ProductModel.ProductModelItem"
+            type ="com.example.onlinegroceries.network.data.ProductModelItem"
             />
 
     </data>

@@ -46,7 +46,7 @@
         android:label="ShowProduct" >
         <argument
             android:name="productModel"
-            app:argType="com.example.onlinegroceries.network.data.ProductModel$ProductModelItem" />
+            app:argType="com.example.onlinegroceries.network.data.ProductModelItem" />
     </fragment>
     <fragment
         android:id="@+id/account"

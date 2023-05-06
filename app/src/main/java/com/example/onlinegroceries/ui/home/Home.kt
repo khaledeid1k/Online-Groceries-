@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.onlinegroceries.R
 import com.example.onlinegroceries.adapter.OnClick
 import com.example.onlinegroceries.adapter.ParentAdapter
 import com.example.onlinegroceries.databinding.FragmentHomeBinding
 import com.example.onlinegroceries.network.data.ParentItem
-import com.example.onlinegroceries.network.data.ProductModel
+import com.example.onlinegroceries.network.data.ProductModelResponse
 import com.example.onlinegroceries.utility.Status
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
@@ -41,8 +39,8 @@ class Home : Fragment() , OnClick  {
         observeViewModel()
 
     }
-    fun lol(product: ProductModel){
-        val list= mutableListOf<ParentItem<ProductModel>>()
+    fun lol(product: ProductModelResponse){
+        val list= mutableListOf<ParentItem<ProductModelResponse>>()
         list.add(ParentItem.HEADER(product))
         list.add(ParentItem.EXCLUSIVEOFFER(product))
         list.add(ParentItem.BESTSELLING(product))
@@ -68,7 +66,7 @@ class Home : Fragment() , OnClick  {
         }
     }
 
-    override fun onClickItem(l: ProductModel.ProductModelItem) {
+    override fun onClickItem(l: ProductModelResponse) {
         val action = HomeDirections.actionFHomeToShowProduct(l)
         findNavController().navigate(action)
     }

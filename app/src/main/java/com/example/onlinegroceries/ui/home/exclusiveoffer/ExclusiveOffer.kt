@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.onlinegroceries.R
 import com.example.onlinegroceries.network.data.ProductResponse
 import com.example.onlinegroceries.databinding.FragmentExclusiveOfferBinding
+import com.example.onlinegroceries.network.data.ProductModelResponse
 import com.example.onlinegroceries.ui.home.ProductsViewModel
 import com.example.onlinegroceries.utility.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -69,7 +70,7 @@ class ExclusiveOffer : Fragment() {
     }
 
 
-    private fun installViews(productList: ProductResponse) {
+    private fun installViews(productList: ProductModelResponse) {
 //        productsAdapter = ProductsAdapter(productList) {
 //                y ,t->     findNavController().navigate(
 //            F_HomeDirections.actionFHomeToShowProduct(y,t))
