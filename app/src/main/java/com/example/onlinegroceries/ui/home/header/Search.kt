@@ -3,35 +3,28 @@ package com.example.onlinegroceries.ui.home.header
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.onlinegroceries.R
-import com.example.onlinegroceries.network.data.SearchModels
 import com.example.onlinegroceries.adapter.SearchAdapter
 import com.example.onlinegroceries.base.BaseFragment
 import com.example.onlinegroceries.databinding.FragmentSearchBinding
-import com.example.onlinegroceries.ui.home.ProductsViewModel
+import com.example.onlinegroceries.network.data.ProductModelItem
+import com.example.onlinegroceries.network.data.ProductModelResponse
 import com.example.onlinegroceries.utility.Status
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class Search : BaseFragment<FragmentSearchBinding>() {
+class Search(viewModelClass: Class<SearchViewModel>)
+    : BaseFragment<FragmentSearchBinding,SearchViewModel>(viewModelClass) {
     override fun getLayoutId() = R.layout.fragment_search
 
     private lateinit var productsAdapter: SearchAdapter
-    private val viewModel: SearchViewModel by viewModels()
 
     override val LOG_TAG: String
         get() = "Search"
@@ -51,7 +44,7 @@ class Search : BaseFragment<FragmentSearchBinding>() {
 
         binding.search.setOnEditorActionListener { _, a, _ ->
             if (a == EditorInfo.IME_ACTION_SEARCH) {
-                    viewModel.getSearch()
+                    viewModel.getAllProducts()
                   hideKeyboard(binding.search)
                     observeViewModel()
             }
@@ -81,7 +74,7 @@ class Search : BaseFragment<FragmentSearchBinding>() {
     }
 
 
-    private fun installViews(productList: SearchModels) {
+    private fun installViews(productList: ProductModelItem) {
         productsAdapter = SearchAdapter(productList, requireContext())
         binding.searchItems.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
@@ -118,7 +111,7 @@ class Search : BaseFragment<FragmentSearchBinding>() {
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
     }
-    fun hideKeyboard(view: View) {
+    private fun hideKeyboard(view: View) {
         val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }

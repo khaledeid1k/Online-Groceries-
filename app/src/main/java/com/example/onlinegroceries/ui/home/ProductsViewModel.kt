@@ -1,8 +1,11 @@
 package com.example.onlinegroceries.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.onlinegroceries.base.BaseViewModel
+import com.example.onlinegroceries.network.data.ProductModelResponse
 import com.example.onlinegroceries.network.repository.MainRepository
 import com.example.onlinegroceries.network.data.ProductResponse
 import com.example.onlinegroceries.utility.Resource
@@ -12,44 +15,33 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductsViewModel
-@Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
+@Inject constructor(private val mainRepository: MainRepository) :
+    BaseViewModel<ProductModelResponse>() {
 
-    // Backing property
-    private var _errorMessage = MutableLiveData<String>()
-    private var _productsList = MutableLiveData<Resource<ProductResponse>>()
-
-    val errorMessage: LiveData<String> get() = _errorMessage
-    val productsList: LiveData<Resource<ProductResponse>> get() = _productsList
 
     // if i want to cansel Coroutine
-    private var job: Job? = null
 
     init {
         getAllProducts()
     }
 
-    private fun getAllProducts() {
+    override fun getAllProducts() {
         job = CoroutineScope(Dispatchers.IO).launch {
             _productsList.postValue(Resource.loading(null))
 
             mainRepository.getProducts().let {
-                withContext(Dispatchers.Main) {
-                    if (it.isSuccessful) {
-                        _productsList.postValue(Resource.success(it.body()))
-                    } else {
-                        _errorMessage.postValue(
-                            Resource.error(it.errorBody().toString(), null).toString()
-                        )
-                    }
-                }
+
+
+                        _productsList.postValue(Resource.success(it.data))
+
+                        _errorMessage.postValue(Resource.error(it.message.toString(), null).toString())
+
+
             }
 
         }
     }
 
 
-    override fun onCleared() {
-        super.onCleared()
-        job?.cancel()
-    }
+
 }

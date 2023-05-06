@@ -8,25 +8,24 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.viewbinding.ViewBinding
-import com.example.onlinegroceries.ui.home.ProductsViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.onlinegroceries.BR
+import com.example.onlinegroceries.network.data.ProductModelItem
+import com.example.onlinegroceries.network.data.ProductModelResponse
 
-abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel<ProductModelResponse>>(
+    private val viewModelClass: Class<VM>
+) : Fragment() {
     abstract val LOG_TAG: String
-    private var _binding: ViewDataBinding? = null
+    lateinit var _binding: VB
     abstract fun getLayoutId(): Int
 
-
-    protected val binding get() = _binding as VB
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _binding = DataBindingUtil.setContentView(requireActivity(),getLayoutId())
-
+    protected val viewModel: VM by lazy {
+        ViewModelProvider(this)[viewModelClass]
     }
+
+    protected val binding get() = _binding
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,12 +34,27 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         observeViewModel()
     }
 
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        _binding = DataBindingUtil.setContentView(requireActivity(), getLayoutId())
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            setVariable(BR.viewmodel, viewModel)
+        }
+        return _binding.root
+    }
+
     //  abstract fun installViews(productList: ProductResponse)
     protected fun log(value: String) {
         Log.d(LOG_TAG, value)
     }
 
     abstract fun observeViewModel()
-
 
 }
