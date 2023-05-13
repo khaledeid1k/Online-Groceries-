@@ -5,14 +5,14 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.onlinegroceries.ui.home.header.SearchViewModel" />
+            type="com.example.onlinegroceries.ui.home.header.search.SearchViewModel" />
     </data>
 
     <RelativeLayout
         android:id="@+id/psearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.header.Search">
+        tools:context=".ui.home.header.search.Search">
 
         <EditText
             android:id="@+id/search"

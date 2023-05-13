@@ -8,18 +8,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.onlinegroceries.BR
-import com.example.onlinegroceries.network.data.ProductModelItem
-import com.example.onlinegroceries.network.data.ProductModelResponse
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel<ProductModelResponse>>(
-    private val viewModelClass: Class<VM>
-) : Fragment() {
+abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel>: Fragment() {
     abstract val LOG_TAG: String
-    lateinit var _binding: VB
+    lateinit var _binding: VDB
     abstract fun getLayoutId(): Int
 
+    abstract val viewModelClass: Class<VM>
     protected val viewModel: VM by lazy {
         ViewModelProvider(this)[viewModelClass]
     }
@@ -31,7 +29,7 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel<ProductMode
         super.onViewCreated(view, savedInstanceState)
         // Hidden toolbar
         activity?.actionBar?.hide()
-        observeViewModel()
+//        observeViewModel()
     }
 
 
@@ -42,7 +40,7 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel<ProductMode
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = DataBindingUtil.setContentView(requireActivity(), getLayoutId())
+        _binding = DataBindingUtil.inflate<VDB>(inflater, getLayoutId(), container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             setVariable(BR.viewmodel, viewModel)
@@ -55,6 +53,6 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel<ProductMode
         Log.d(LOG_TAG, value)
     }
 
-    abstract fun observeViewModel()
+//    abstract fun observeViewModel()
 
 }

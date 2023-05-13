@@ -1,0 +1,36 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffa10daeed7, pid=13084, tid=2396
+#
+# JRE version: OpenJDK Runtime Environment (11.0.13) (build 11.0.13+0-b1751.21-8125866)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.13+0-b1751.21-8125866, mixed mode, tiered, compressed oops, g1 gc, windows-amd64)
+# Problematic frame:
+# V  [jvm.dll+0x37eed7]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant org.gradle.launcher.daemon.bootstrap.GradleDaemon 7.4
+
+Host: Intel(R) Core(TM) i7-4610M CPU @ 3.00GHz, 4 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.2364)
+Time: Mon Jan 30 15:01:45 2023 Egypt Standard Time elapsed time: 10719.410627 seconds (0d 2h 58m 39s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000297f8f33800):  JavaThread "pool-199-thread-1" [_thread_in_vm, id=2396, stack(0x000000f8c6900000,0x000000f8c6a00000)]
+
+Stack: [0x000000f8c6900000,0x000000f8c6a00000],  sp=0x000000f8c69ff710,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x37eed7]
+V  [jvm.dll+0x610022]
+V  [jvm.dll+0x37f88a]
+V  [jvm.dll+0x37fb17]
+V  [jvm.dll+0x3f4a6d]
+V  [jvm.dll+0x70de0f]
+V  [jvm.dll+0x706a75]

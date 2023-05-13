@@ -7,18 +7,18 @@
 
         <variable
             name="fragment"
-            type="com.example.onlinegroceries.ui.home.ShowProduct" />
+            type="com.example.onlinegroceries.ui.home.showproduct.ShowProduct" />
 
         <variable
-            name="product"
-            type="com.example.onlinegroceries.network.data.ProductModelItem" />
+            name="model"
+            type="com.example.onlinegroceries.model.ProductModelItem" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.ShowProduct"
+        tools:context=".ui.home.showproduct.ShowProduct"
         app:layoutDescription="@xml/fragment_show_product_scene">
 
         <ImageButton
@@ -75,7 +75,7 @@
 
             <ImageView
                 android:id="@+id/specificProductImage"
-                imageUrl="@{product.image}"
+                imageUrl="@{model.image}"
                 android:layout_width="@dimen/_180sdp"
                 android:layout_height="@dimen/_180sdp"
                 android:elevation="@dimen/_8sdp"
@@ -87,7 +87,7 @@
 
             <ImageView
                 android:id="@+id/specificProductShadow"
-                imageUrl="@{product.image}"
+                imageUrl="@{model.image}"
                 android:layout_width="@dimen/_180sdp"
                 android:layout_height="@dimen/_180sdp"
                 android:layout_marginTop="@dimen/_15sdp"

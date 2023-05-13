@@ -4,7 +4,7 @@
     android:id="@+id/psearch"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".utility.SearchScreen">
+    >
 
     <EditText
         android:id="@+id/search"

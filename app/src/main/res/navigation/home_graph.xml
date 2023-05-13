@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/f_Search2"
-        android:name="com.example.onlinegroceries.ui.home.header.Search"
+        android:name="com.example.onlinegroceries.ui.home.header.search.Search"
         android:label="fragment_f__search"
         tools:layout="@layout/fragment_search">
 
@@ -33,20 +33,20 @@
     </fragment>
     <fragment
         android:id="@+id/exclusiveOfferProducts"
-        android:name="com.example.onlinegroceries.ui.home.exclusiveoffer.ExclusiveOfferProducts"
+        android:name="com.example.onlinegroceries.ui.home.menClothing.MenClothingProducts"
         android:label="fragment_exclusive_offer_products"
-        tools:layout="@layout/fragment_exclusive_offer_products" >
+        tools:layout="@layout/fragment_menclothing_products" >
         <action
             android:id="@+id/action_exclusiveOfferProducts_to_showProduct"
             app:destination="@id/showProduct" />
     </fragment>
     <fragment
         android:id="@+id/showProduct"
-        android:name="com.example.onlinegroceries.ui.home.ShowProduct"
+        android:name="com.example.onlinegroceries.ui.home.showproduct.ShowProduct"
         android:label="ShowProduct" >
         <argument
             android:name="productModel"
-            app:argType="com.example.onlinegroceries.network.data.ProductModelItem" />
+            app:argType="com.example.onlinegroceries.model.ProductModelItem" />
     </fragment>
     <fragment
         android:id="@+id/account"

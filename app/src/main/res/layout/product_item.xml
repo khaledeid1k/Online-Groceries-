@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="modelP"
-            type ="com.example.onlinegroceries.network.data.ProductModelItem"
+            name="model"
+            type ="com.example.onlinegroceries.model.ProductModelItem"
 
             />
     </data>
@@ -38,7 +38,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageUrl="@{modelP.image}"/>
+                    app:imageUrl="@{model.image}"/>
 
                 <TextView
                     android:id="@+id/productName_TextView"
@@ -54,7 +54,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/productImage"
                     tools:text="Diet Coke"
-                    android:text="@{modelP.title}"/>
+                    android:text="@{model.title}"/>
 
                 <TextView
                     android:id="@+id/productType_TextView"
@@ -68,7 +68,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/productName_TextView"
                     tools:text="Diet Coke"
-                    android:text="@{modelP.category}"/>
+                    android:text="@{model.category}"/>
 
                 <TextView
                     android:id="@+id/productPrice_TextView"
@@ -78,7 +78,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/filledBlack"
                     android:textSize="12sp"
-                    app:setPrice="@{modelP.price}"
+                    app:setPrice="@{model.price}"
                     app:layout_constraintBottom_toBottomOf="@+id/cardView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/cardView" />

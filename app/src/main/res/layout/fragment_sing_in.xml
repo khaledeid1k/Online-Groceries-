@@ -1,109 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/sing_in_"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.singIn.SingIn"
-    android:orientation="vertical">
-    <!--    android:background="@drawable/sing_in_"-->
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sing_in_"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_215sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.singIn.SingIn"
+        android:orientation="vertical">
+        <!--    android:background="@drawable/sing_in_"-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_215sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_215sdp"
+                android:background="#00000000"
+                android:src="@drawable/mask"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/g"
+            android:layout_width="@dimen/_222sdp"
+            android:layout_height="@dimen/_63sdp"
+            android:layout_marginTop="292dp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:gravity="top"
+            android:lineSpacingExtra="-3sp"
+            android:text="@string/get_your_gr"
+            android:textAppearance="@style/get_your_gr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.166"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/text_input_layout"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_215sdp"
-            android:background="#00000000"
-            android:src="@drawable/mask"
+            android:layout_height="@dimen/_70sdp"
+            app:layout_constraintBottom_toTopOf="@+id/sing_in_face_google"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/g"
+            android:src="@drawable/number_phone"></ImageView>
+
+
+        <LinearLayout
+            android:id="@+id/sing_in_face_google"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/text_input_layout">
+
+            <TextView
+                android:layout_width="@dimen/_180sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:text="@string/or_connect_"
+                android:textAppearance="@style/or_connect_"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/google"
+                android:layout_marginStart="@dimen/_19sdp"
+                android:layout_marginEnd="@dimen/_21sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:iconGravity="textStart"
+                android:background="@drawable/face"
+                app:icon="@drawable/googleicon"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/face"
+                android:layout_marginStart="@dimen/_19sdp"
+                android:layout_marginEnd="@dimen/_21sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:icon="@drawable/facebook_icon"
+                app:iconGravity="textStart"
+                android:textSize="13sp"
+                android:background="@drawable/face" />
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/g"
-        android:layout_width="@dimen/_222sdp"
-        android:layout_height="@dimen/_63sdp"
-        android:layout_marginTop="292dp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:gravity="top"
-        android:lineSpacingExtra="-3sp"
-        android:text="@string/get_your_gr"
-        android:textAppearance="@style/get_your_gr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/text_input_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        app:layout_constraintBottom_toTopOf="@+id/sing_in_face_google"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/g"
-        android:src="@drawable/number_phone"></ImageView>
-
-
-    <LinearLayout
-        android:id="@+id/sing_in_face_google"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_120sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_layout">
-
-        <TextView
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_15sdp"
-            android:text="@string/or_connect_"
-            android:textAppearance="@style/or_connect_"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:id="@+id/google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/google"
-            android:layout_marginStart="@dimen/_19sdp"
-            android:layout_marginEnd="@dimen/_21sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:iconGravity="textStart"
-            android:background="@drawable/face"
-            app:icon="@drawable/googleicon"
-            android:textSize="13sp" />
-
-        <Button
-            android:id="@+id/facebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/face"
-            android:layout_marginStart="@dimen/_19sdp"
-            android:layout_marginEnd="@dimen/_21sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:icon="@drawable/facebook_icon"
-            app:iconGravity="textStart"
-            android:textSize="13sp"
-            android:background="@drawable/face" />
-
-    </LinearLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 
     <!--<TextView-->
     <!--android:layout_width="wrap_content"-->

@@ -1,23 +1,15 @@
 package com.example.onlinegroceries.ui.home
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.onlinegroceries.base.BaseViewModel
-import com.example.onlinegroceries.network.data.ProductModelResponse
-import com.example.onlinegroceries.network.repository.MainRepository
-import com.example.onlinegroceries.network.data.ProductResponse
+import com.example.onlinegroceries.model.ProductModelResponse
+import com.example.onlinegroceries.repository.MainRepository
 import com.example.onlinegroceries.utility.Resource
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
-import javax.inject.Inject
 
-@HiltViewModel
 class ProductsViewModel
-@Inject constructor(private val mainRepository: MainRepository) :
+ :
     BaseViewModel<ProductModelResponse>() {
-
+    private val mainRepository= MainRepository()
 
     // if i want to cansel Coroutine
 

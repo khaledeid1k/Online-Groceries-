@@ -3,10 +3,8 @@ package com.example.onlinegroceries.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.onlinegroceries.network.data.ProductModelResponse
 import com.example.onlinegroceries.utility.Resource
 import kotlinx.coroutines.Job
-
 abstract class BaseViewModel<T> : ViewModel() {
 
     var _errorMessage = MutableLiveData<String>()

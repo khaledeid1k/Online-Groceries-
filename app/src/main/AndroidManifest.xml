@@ -5,13 +5,12 @@
     <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
     <!-- &lt;!&ndash; Include only if your app benefits from precise location access. &ndash;&gt; -->
     <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+<!--    <uses-permission android:name="android.permission.SEND_SMS" />-->
+<!--    <uses-permission android:name="android.permission.RECEIVE_SMS" />-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".network.dI.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,7 +21,7 @@
         android:theme="@style/Theme.OnlineGroceries"
         tools:targetApi="31">
          <activity
-            android:name=".ui.start.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
