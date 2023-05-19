@@ -82,9 +82,9 @@
 
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/shopRV"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:paddingTop="@dimen/_6sdp"
+            android:layout_width="364dp"
+            android:layout_height="100dp"
+            android:paddingTop="@dimen/_10sdp"
             app:sliderAnimationDuration="600"
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"

@@ -14,7 +14,7 @@ import com.example.onlinegroceries.BR
 
 abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel>: Fragment() {
     abstract val LOG_TAG: String
-    lateinit var _binding: VDB
+    private lateinit var _binding : VDB
     abstract fun getLayoutId(): Int
 
     abstract val viewModelClass: Class<VM>
@@ -27,12 +27,8 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel>: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Hidden toolbar
         activity?.actionBar?.hide()
-//        observeViewModel()
     }
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,19 +36,17 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : ViewModel>: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = DataBindingUtil.inflate<VDB>(inflater, getLayoutId(), container, false)
+        _binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            setVariable(BR.viewmodel, viewModel)
+            setVariable(BR.viewModel, viewModel)
         }
         return _binding.root
     }
 
-    //  abstract fun installViews(productList: ProductResponse)
     protected fun log(value: String) {
         Log.d(LOG_TAG, value)
     }
 
-//    abstract fun observeViewModel()
 
 }

@@ -13,14 +13,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.chuckerteam.chucker.databinding.ChuckerActivityMainBinding
 import com.example.onlinegroceries.R
-
-
+import com.example.onlinegroceries.utility.extention.makeGone
+import com.example.onlinegroceries.utility.extention.makeInVisible
+import com.example.onlinegroceries.utility.extention.makeVisible
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-
 
   private lateinit var bottomNavigation : BottomNavigationView
   lateinit var navController : NavController
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                     true}
                 R.id.explore->{navController.navigate(R.id.explore)
                     true}
-                R.id.FHome->{navController.navigate(R.id.FHome)
+                R.id.home->{navController.navigate(R.id.home)
                     true}
                 else -> false
             }
@@ -72,9 +72,9 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.splashScreen||
                 destination.id == R.id.onBoarding) {
-                bottomNavigation.visibility = View.GONE
+                bottomNavigation.makeGone()
             } else {
-                bottomNavigation.visibility = View.VISIBLE
+                bottomNavigation.makeVisible()
             }
         }
 

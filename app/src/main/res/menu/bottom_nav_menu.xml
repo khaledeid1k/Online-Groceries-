@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/FHome"
+        android:id="@+id/home"
         android:enabled="true"
         app:showAsAction="ifRoom"
         android:title="Shop"
-        android:icon="@drawable/shop_p"/>
+        android:icon="@drawable/baseline_home_24"/>
 
     <item
         android:id="@+id/explore"

@@ -18,7 +18,7 @@ class Search
     override val viewModelClass: Class<SearchViewModel>
         get() = SearchViewModel::class.java
 
-    private lateinit var productsAdapter: SearchAdapter
+    //private lateinit var productsAdapter: SearchAdapter
 
     override val LOG_TAG: String
         get() = "Search"

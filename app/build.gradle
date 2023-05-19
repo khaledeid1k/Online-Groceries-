@@ -27,13 +27,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_URL", "\"https://fakestoreapi.com/\""
         }
         debug {
             buildConfigField "String", "API_URL", "\"https://fakestoreapi.com/\""
         }
-        release {
-            buildConfigField "String", "API_URL", "\"https://fakestoreapi.com/\""
-        }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -116,6 +115,10 @@ dependencies {
 
     //Swipe to refresh layout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    // lottie animation
+    implementation 'com.airbnb.android:lottie:6.0.0'
+
 
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'

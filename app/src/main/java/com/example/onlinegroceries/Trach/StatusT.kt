@@ -1,7 +1,5 @@
 package com.example.onlinegroceries.Trach
 
-import com.example.onlinegroceries.utility.Status
-
 //These classes will be used to wrap our
 // data to be used in a generic way into our UI.
 sealed class Statuss<T> {

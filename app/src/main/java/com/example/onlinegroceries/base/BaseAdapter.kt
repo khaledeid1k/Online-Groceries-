@@ -6,12 +6,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
+import com.example.onlinegroceries.BR
+import com.example.onlinegroceries.ui.DiffUtils
+import kotlinx.parcelize.Parcelize
 
-abstract class  BaseAdapter<VB:ViewDataBinding,T>(
+abstract class  BaseAdapter<T>(
     private var items:List<T>,
-    private var onSelect: (T) -> Unit,
-) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder<VB>>() {
+    private var listener :BaseInteractionInter
+
+) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
     fun setItems(newItem:List<T>){
         val diffUtil = DiffUtil.calculateDiff(DiffUtils(items, newItem))
         items = newItem
@@ -19,12 +22,11 @@ abstract class  BaseAdapter<VB:ViewDataBinding,T>(
     }
     fun getItems()=items
     // covert xml to kotlin
-    abstract fun bindItem(ViewDataBinding: VB, data: T)
     abstract val layoutId : Int
     // يتم استدعاء الداله  بعدد ال views الي ممكن تتحط في الشاشة وبعد كده مش هتستدعي تاني
     // وهي بتعمل inflate للعنصر الي ال ViewHolder مسئول عنه
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<VB> {
-        return BaseViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        return ItemViewHolder(
             DataBindingUtil.inflate
                 (
                 LayoutInflater.from(parent.context),
@@ -36,9 +38,18 @@ abstract class  BaseAdapter<VB:ViewDataBinding,T>(
     }
 
     // دي بتعمل اعاده استخدام لل viewHolder وبتمرر بيانات جديده
-    override fun onBindViewHolder(holder: BaseViewHolder<VB>, position: Int) {
-        bindItem(holder.binding, items[position])
-            // onSelect(items[position])
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        val currentItem = items[position]
+        when(holder){
+            is ItemViewHolder->{
+                holder.bindingItem.apply {
+                    setVariable(BR.item,currentItem)
+                    setVariable(BR.listener,listener)
+
+                }
+
+            }
+        }
     }
 
     override fun getItemCount()= items.size
@@ -47,36 +58,15 @@ abstract class  BaseAdapter<VB:ViewDataBinding,T>(
     // connect code to xml
     // هو حامل لل item الي راح احطه في RecyclerView
     // هوالمسؤال عن ال item الي عايز اعرضه داخل ال RecycleView
-     class BaseViewHolder<VB:ViewDataBinding>(val binding: VB)
+     abstract class BaseViewHolder(val binding: ViewDataBinding)
         : RecyclerView.ViewHolder(
-        binding.root)
-    {
+        binding.root) {
 
-
-//        // bind your view here
-//        itemView.rootView.setOnClickListener {
-//        onSelect(T)
-//    }
-
-        }
-    // to check if list change or not and update list
-
-    inner class DiffUtils<T>(private val oldList: List<T>, private val newList: List<T>) :
-        DiffUtil.Callback() {
-        override fun getOldListSize() = oldList.size
-
-        override fun getNewListSize() = newList.size
-
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-            oldList[oldItemPosition] == newList[newItemPosition]
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) = true
     }
+    class ItemViewHolder(val bindingItem: ViewDataBinding) :
+        BaseViewHolder(bindingItem)
 
-//    fun updateData(newList : ProductResponse){
-//        val diffResult= DiffUtil.calculateDiff(MyDiffUtil(productsList,newList))
-//        productsList=newList
-//        diffResult.dispatchUpdatesTo(this)
-//    }
+
 
 }
+interface BaseInteractionInter

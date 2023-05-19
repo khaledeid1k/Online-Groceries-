@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.onlinegroceries.R
 import com.example.onlinegroceries.databinding.FragmentHeaderOfHomeBinding
+import com.example.onlinegroceries.model.SliderData
 import com.smarteist.autoimageslider.SliderView
 
 class HeaderHome(private val fragment: Fragment) {
@@ -21,7 +22,7 @@ class HeaderHome(private val fragment: Fragment) {
         // adding the urls inside array list
 
         // adding the urls inside array list
-        sliderDataArrayList.add(SliderData(R.drawable.banner1))
+        sliderDataArrayList.add(SliderData(R.drawable.banner))
         sliderDataArrayList.add(SliderData(R.drawable.banner2))
 
         // passing this array list inside our adapter class.
@@ -67,7 +68,7 @@ class HeaderHome(private val fragment: Fragment) {
         binding.shopSearchEditText.setOnTouchListener { _, p1 ->
             if (p1.action == MotionEvent.ACTION_DOWN) {
                 // parentFragmentManager.findFragmentById(R.id.AHome)
-                fragment.findNavController().navigate(R.id.action_FHome_to_f_Search2)
+                fragment.findNavController().navigate(R.id.home_to_search)
             }
             return@setOnTouchListener false
         }

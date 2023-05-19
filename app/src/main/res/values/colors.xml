@@ -14,6 +14,9 @@
     <color name="colorPrimary">#53B175</color>
     <color name="colorPrimaryDark">#53B175</color>
     <color name="colorAccent">#53B175</color>
+    <color name="offWhite">#B3B3B3</color>
+    <color name="lightBlack1">#181725</color>
+    <color name="lightWhite">#E2E2E2</color>
 
 
 </resources>
