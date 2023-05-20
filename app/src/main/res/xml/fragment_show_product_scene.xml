@@ -4,6 +4,24 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint android:id="@+id/backButtonSP" />
+        <Constraint
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/product_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/textDetail" />
+        <Constraint
+            android:layout_marginEnd="@dimen/_21sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/arrow2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:id="@+id/add_to_basket" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">

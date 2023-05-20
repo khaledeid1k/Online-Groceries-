@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="fragment"
+            type="com.example.onlinegroceries.ui.home.allproducts.FragmentAllProducts" />
         <variable
             name="viewModel"
             type="com.example.onlinegroceries.ui.home.allproducts.AllProductsViewModel" />

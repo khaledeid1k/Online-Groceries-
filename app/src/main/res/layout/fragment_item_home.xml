@@ -30,7 +30,6 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:gravity="top"
-            tools:text="@{item.PTag.title}"
             android:textAppearance="@style/exclusive_o" />
 
         <TextView

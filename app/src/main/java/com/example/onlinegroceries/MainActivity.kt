@@ -34,44 +34,61 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun inti(){
+    private fun inti() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_singIn) as NavHostFragment
-         navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
-         bottomNavigation=
+        bottomNavigation =
             findViewById(R.id.bottomNavigationView)
-            // Hook your navigation controller to bottom navigation view
-        bottomNavigation .setupWithNavController(navController)
-
+        // Hook your navigation controller to bottom navigation view
+        bottomNavigation.setupWithNavController(navController)
 
 
     }
-    private fun navigateFromBottomNavigation(){
+
+    private fun navigateFromBottomNavigation() {
 
         // navigate to fragments from bottom navigation
-        bottomNavigation.setOnItemSelectedListener { item->
-            when(item.itemId){
-                R.id.account->{navController.navigate(R.id.account)
-                    true}
-                R.id.cart->{navController.navigate(R.id.cart)
-                    true}
-                R.id.favorite->{navController.navigate(R.id.favorite)
-                    true}
-                R.id.explore->{navController.navigate(R.id.explore)
-                    true}
-                R.id.home->{navController.navigate(R.id.home)
-                    true}
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.account -> {
+                    navController.navigate(R.id.account)
+                    true
+                }
+
+                R.id.cart -> {
+                    navController.navigate(R.id.cart)
+                    true
+                }
+
+                R.id.favorite -> {
+                    navController.navigate(R.id.favorite)
+                    true
+                }
+
+                R.id.explore -> {
+                    navController.navigate(R.id.explore)
+                    true
+                }
+
+                R.id.home -> {
+                    navController.navigate(R.id.home)
+                    true
+                }
+
                 else -> false
             }
         }
 
     }
-    private fun hiddenBottomNavigation(){
+
+    private fun hiddenBottomNavigation() {
         // hidden bottom navigation from splash and Onboard screens
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.splashScreen||
-                destination.id == R.id.onBoarding) {
+            if (destination.id == R.id.splashScreen ||
+                destination.id == R.id.onBoarding
+            ) {
                 bottomNavigation.makeGone()
             } else {
                 bottomNavigation.makeVisible()
@@ -87,5 +104,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    fun hideBottomNavigation() {
+        bottomNavigation.makeGone()
     }
+}

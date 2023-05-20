@@ -2,12 +2,14 @@ package com.example.onlinegroceries.ui.home.allproducts
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.onlinegroceries.R
 import com.example.onlinegroceries.base.BaseFragment
 import com.example.onlinegroceries.databinding.FragmentAllProductsBinding
 import com.example.onlinegroceries.model.ProductModelItem
 import com.example.onlinegroceries.ui.home.ItemStandInteractionInter
+import com.example.onlinegroceries.utility.extention.closeFragment
 
 class FragmentAllProducts
     : BaseFragment<FragmentAllProductsBinding, AllProductsViewModel>(), ItemStandInteractionInter {
@@ -22,9 +24,14 @@ class FragmentAllProducts
         super.onViewCreated(view, savedInstanceState)
         val adapter = AllProductsAdapter(this, mutableListOf())
         binding.RecycleStand.adapter = adapter
+        binding.backToHomeFromEX.setOnClickListener {
+            closeFragment()
+        }
     }
 
     override fun onClickItemStand(productModelItem: ProductModelItem) {
+        findNavController().navigate(FragmentAllProductsDirections.allProductsToShowProduct(productModelItem)
+        )
 
     }
 

@@ -4,23 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="fragment"
-            type="com.example.onlinegroceries.ui.home.showproduct.ShowProduct" />
+            name="viewModel"
+            type="com.example.onlinegroceries.ui.home.showproduct.ShowProductViewModel" />
 
-        <variable
-            name="model"
-            type="com.example.onlinegroceries.model.ProductModelItem" />
     </data>
-
-    <androidx.constraintlayout.motion.widget.MotionLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.home.showproduct.ShowProduct"
-        app:layoutDescription="@xml/fragment_show_product_scene">
-
+        android:layout_height="match_parent">
+<!--        app:layoutDescription="@xml/fragment_show_product_scene"-->
         <ImageButton
             android:id="@+id/backButtonSP"
             android:layout_width="wrap_content"
@@ -30,11 +23,11 @@
             android:elevation="@dimen/_8sdp"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:onClick="@{()-> fragment.backToPreviousScreen()}"
             android:padding="@dimen/_8sdp"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
 
         <ImageButton
             android:id="@+id/shareProduct"
@@ -45,11 +38,11 @@
             android:elevation="@dimen/_8sdp"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:onClick="@{()-> fragment.shareProduct()}"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_baseline_share_24"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent" />
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"
@@ -61,8 +54,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_200sdp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -75,7 +69,7 @@
 
             <ImageView
                 android:id="@+id/specificProductImage"
-                imageUrl="@{model.image}"
+                imageUrl="@{viewModel.productsList.image}"
                 android:layout_width="@dimen/_180sdp"
                 android:layout_height="@dimen/_180sdp"
                 android:elevation="@dimen/_8sdp"
@@ -85,9 +79,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/guideline5" />
 
+
             <ImageView
                 android:id="@+id/specificProductShadow"
-                imageUrl="@{model.image}"
                 android:layout_width="@dimen/_180sdp"
                 android:layout_height="@dimen/_180sdp"
                 android:layout_marginTop="@dimen/_15sdp"
@@ -101,103 +95,239 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/productName_TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
-            android:textColor="@color/filledBlack"
-            android:textSize="@dimen/_21sdp"
-            android:textStyle="bold"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_9sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
-        <TextView
-            android:id="@+id/productQuantity_TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:textColor="@color/lightBlack"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productName_TextView" />
-
-        <ImageView
-            android:id="@+id/favoriteProduct_ImageView"
-            android:layout_width="@dimen/_55sdp"
-            android:layout_height="@dimen/_55sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/productQuantity_TextView"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/productQuantityContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productQuantity_TextView">
-
-            <ImageView
-                android:id="@+id/productQuantityMinus"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/line0_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp" />
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_end="15dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/line0_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/productQuantity_EditText"
-                android:layout_width="@dimen/_38sdp"
-                android:layout_height="@dimen/_38sdp"
-                android:gravity="center"
-                android:maxLines="1"
-                android:textStyle="bold" />
+                android:id="@+id/productName_TextView"
+                style="@style/product_show_title"
+                android:layout_width="@dimen/_190sdp"
+                app:layout_constraintBottom_toTopOf="@+id/productQuantity_TextView"
+                android:text="@{viewModel.productsList.title}"
+                app:layout_constraintStart_toStartOf="@id/line0_start"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="John Hardy Women's Legends Naga Gold  Silver Dragon Station Chain Bracelet" />
 
             <ImageView
-                android:id="@+id/productQuantityPlus"
+                android:id="@+id/favoriteProduct_ImageView"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/favorite_prouduct"
+                app:layout_constraintBottom_toBottomOf="@+id/productName_TextView"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintTop_toTopOf="@+id/productName_TextView" />
+
+            <TextView
+                android:id="@+id/productQuantity_TextView"
+                style="@style/product_show_subTitle"
+                android:text="@string/_1kg_price"
+                app:layout_constraintBottom_toTopOf="@+id/productQuantityContainer"
+                app:layout_constraintStart_toEndOf="@+id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/productName_TextView" />
+
+
+            <LinearLayout
+                android:id="@+id/productQuantityContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp" />
-        </LinearLayout>
+                app:layout_constraintBottom_toTopOf="@+id/line"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/productQuantity_TextView">
 
-        <TextView
-            android:id="@+id/productPrice_TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
-            android:textStyle="bold"
-            android:theme="@style/bigTextTheme"
-            app:layout_constraintBottom_toBottomOf="@+id/productQuantityContainer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/productQuantityContainer"
-            tools:text="5.99$" />
+                <ImageView
+                    android:id="@+id/productQuantityMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/minimize_product" />
 
-        <TextView
-            android:id="@+id/textDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
-            android:textStyle="bold"
-            android:theme="@style/textTheme"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productQuantityContainer" />
+                <TextView
+                    android:id="@+id/productQuantity_EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/product_quantity"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="1" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
-            android:textColor="@color/lightBlack"
-            android:textSize="@dimen/_10sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textDetail" />
+                <ImageView
+                    android:id="@+id/productQuantityPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:src="@drawable/add_product" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/productPrice_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(viewModel.productsList.price)}"
+                android:theme="@style/bigTextTheme"
+                app:layout_constraintBottom_toBottomOf="@+id/productQuantityContainer"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintTop_toTopOf="@+id/productQuantityContainer"
+                tools:text="5.99$" />
 
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+            <View
+                android:id="@+id/line"
+                style="@style/product_show_line"
+                app:layout_constraintBottom_toTopOf="@+id/product_detail"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintStart_toEndOf="@id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/productQuantityContainer" />
+
+            <TextView
+                android:id="@+id/product_detail"
+                style="@style/product_show_title.smallTitle"
+                android:layout_width="wrap_content"
+                android:text="@string/product_detail"
+                app:layout_constraintBottom_toTopOf="@+id/textDetail"
+                app:layout_constraintStart_toEndOf="@+id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/line" />
+
+
+            <TextView
+                android:id="@+id/textDetail"
+                style="@style/product_show_subTitle"
+                android:text="@{viewModel.productsList.description}"
+                android:textSize="14sp"
+                android:maxLines="3"
+                android:ellipsize="end"
+                app:layout_constraintBottom_toTopOf="@+id/line2"
+                app:layout_constraintEnd_toStartOf="@+id/line0_end"
+                app:layout_constraintStart_toEndOf="@+id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/product_detail"
+                tools:text="@string/deatils_product" />
+
+            <View
+                android:id="@+id/line2"
+                style="@style/product_show_line"
+                app:layout_constraintBottom_toTopOf="@+id/quantity"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintStart_toEndOf="@id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/textDetail" />
+
+            <TextView
+                android:id="@+id/nutritions"
+                style="@style/product_show_title.smallTitle"
+                android:text="@string/nutritions"
+                app:layout_constraintBottom_toTopOf="@+id/line3"
+                app:layout_constraintStart_toEndOf="@id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/quantity_background"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_2sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/nutritions"
+                app:layout_constraintEnd_toStartOf="@+id/arrow"
+                app:layout_constraintTop_toTopOf="@+id/nutritions"
+                android:text="@string/nutritionsValue" />
+
+            <ImageView
+                android:id="@+id/arrow"
+                style="@style/product_show_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/quantity"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintTop_toTopOf="@+id/quantity" />
+
+
+            <View
+                android:id="@+id/line3"
+                app:layout_constraintBottom_toTopOf="@+id/rate"
+                style="@style/product_show_line"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintStart_toEndOf="@id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/nutritions" />
+
+            <TextView
+                android:id="@+id/review"
+                style="@style/product_show_title.smallTitle"
+                android:gravity="center_vertical"
+                android:text="@string/review"
+                app:layout_constraintVertical_bias=".2"
+                app:layout_constraintBottom_toTopOf="@+id/add_to_basket"
+                app:layout_constraintStart_toEndOf="@id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/line3" />
+
+            <RatingBar
+                android:id="@+id/rate"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:progressTint="#F3603F"
+                android:rating="@{(float) viewModel.productsList.Rating.rate}"
+                app:layout_constraintBottom_toBottomOf="@+id/review"
+                app:layout_constraintEnd_toStartOf="@+id/arrow2"
+                app:layout_constraintTop_toTopOf="@+id/review"
+                tools:rating="4.6" />
+
+
+            <ImageView
+                android:id="@+id/arrow2"
+                style="@style/product_show_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/rate"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintTop_toTopOf="@+id/rate" />
+
+            <Button
+                android:id="@+id/add_to_basket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/face"
+                android:backgroundTint="@color/green"
+                android:padding="10dp"
+                android:text="@string/addToBasket"
+                android:textSize="13sp"
+                app:layout_constraintVertical_bias=".9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/line0_end"
+                app:layout_constraintStart_toEndOf="@id/line0_start"
+                app:layout_constraintTop_toBottomOf="@+id/review" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

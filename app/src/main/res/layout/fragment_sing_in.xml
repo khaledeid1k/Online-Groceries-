@@ -81,7 +81,7 @@
                 android:layout_gravity="center_horizontal" />
 
             <Button
-                android:id="@+id/google"
+                android:id="@+id/add_to_basket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/google"
